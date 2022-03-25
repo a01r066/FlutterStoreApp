@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_store_app/helpers/kapp_icons.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 class UserTileWidget extends StatefulWidget {
   final IconData icon;
@@ -43,7 +44,7 @@ Widget UserTile(String title) {
     style: TextStyle(
       fontSize: 20.0,
       fontWeight: FontWeight.bold,
-      color: Colors.black54,
+      color: Colors.black87,
     ),
   );
 }
@@ -59,6 +60,55 @@ Widget UserSetting({required IconData icon, required String title, required bool
       },
       activeTrackColor: Colors.grey[300],
       activeColor: Colors.blueAccent,
+    ),
+  );
+}
+
+Widget UserBag({required IconData icon, required String title}){
+  return ListTile(
+    title: Text(title),
+    leading: Icon(icon),
+    trailing: Icon(KAppIcons.arrowRight),
+  );
+}
+
+Widget buildFab(ScrollController _scrollController) {
+  //starting fab position
+  const double defaultTopMargin = 196.0;
+  //pixels from top where scaling should start
+  const double scaleStart = 160.0;
+  //pixels from top where scaling should end
+  const double scaleEnd = scaleStart / 2;
+
+  double top = defaultTopMargin;
+  double scale = 1.0;
+  if (_scrollController.hasClients) {
+    double offset = _scrollController.offset;
+    top -= offset;
+    if (offset < defaultTopMargin - scaleStart) {
+      //offset small => don't scale down
+      scale = 1.0;
+    } else if (offset < defaultTopMargin - scaleEnd) {
+      //offset between scaleStart and scaleEnd => scale down
+      scale = (defaultTopMargin - scaleEnd - offset) / scaleEnd;
+    } else {
+      //offset passed scaleEnd => hide fab
+      scale = 0.0;
+    }
+  }
+
+  return Positioned(
+    top: top,
+    right: 16.0,
+    child: Transform(
+      transform: Matrix4.identity()..scale(scale),
+      alignment: Alignment.center,
+      child: FloatingActionButton(
+        backgroundColor: Colors.purple,
+        heroTag: "btn1",
+        onPressed: () {},
+        child: Icon(KAppIcons.camera),
+      ),
     ),
   );
 }

@@ -1,24 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_store_app/pages/bottom_bar_page.dart';
-import 'package:flutter_store_app/pages/home_page.dart';
+import 'package:flutter_store_app/controllers/theme_controller.dart';
+import 'package:flutter_store_app/pages/app_widget.dart';
+import 'package:get/get.dart';
 
 void main() {
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primaryColor: Colors.deepPurple,
-      ),
-      home: BottomBarPage(),
-    );
-  }
+  Get.lazyPut(() => ThemeController());
+  runApp(AppWidget());
 }

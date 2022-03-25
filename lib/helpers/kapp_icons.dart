@@ -16,4 +16,9 @@ class KAppIcons {
   static const date = MdiIcons.calendar;
   static const moon = MdiIcons.moonWaningCrescent;
   static const logout = MdiIcons.logout;
+  static const camera = MdiIcons.cameraOutline;
+  static const arrowRight = MdiIcons.chevronRight;
+  static const wishlist = MdiIcons.heartMultipleOutline;
+  static const cartHeart = MdiIcons.cartHeart;
+
 }
