@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_store_app/helpers/kapp_icons.dart';
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 class UserTileWidget extends StatefulWidget {
   final IconData icon;

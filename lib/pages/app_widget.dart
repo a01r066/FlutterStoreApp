@@ -7,18 +7,15 @@ import 'package:flutter_store_app/pages/home_page.dart';
 import 'package:flutter_store_app/pages/search_page.dart';
 import 'package:flutter_store_app/pages/user_info_page.dart';
 import 'package:get/get.dart';
-import 'package:path/path.dart';
-
 import '../helpers/theme_data.dart';
 
 class AppWidget extends StatefulWidget {
-
   @override
   _AppWidgetState createState() => _AppWidgetState();
 }
 
 class _AppWidgetState extends State<AppWidget> {
-  final themeController = Get.find<ThemeController>();
+  final _themeController = Get.find<ThemeController>();
 
   int _selectedPageIndex = 0;
   late List<Map<String, Widget>> _pages;
@@ -33,6 +30,7 @@ class _AppWidgetState extends State<AppWidget> {
       {'page': CartPage()},
       {'page': UserInfoPage()},
     ];
+    _themeController.getDarkMode();
     super.initState();
   }
 
@@ -41,7 +39,7 @@ class _AppWidgetState extends State<AppWidget> {
     return Obx(() =>
       GetMaterialApp(
         debugShowCheckedModeBanner: false,
-          theme: Styles.themeData(themeController.isDarkMode, context),
+          theme: Styles.themeData(_themeController.isDarkMode, context),
         home: Scaffold(
           body: Container(
             child: _pages[_selectedPageIndex]['page'],
