@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_store_app/helpers/kapp_icons.dart';
 import 'package:flutter_store_app/pages/cart_page.dart';
 import 'package:flutter_store_app/pages/feeds_page.dart';
 import 'package:flutter_store_app/pages/home_page.dart';
@@ -17,6 +18,7 @@ class _BottomBarPageState extends State<BottomBarPage> {
 
   @override
   void initState() {
+    _selectedPageIndex = 4;
     _pages = [
       {'page': HomePage()},
       {'page': FeedsPage()},
@@ -53,15 +55,15 @@ class _BottomBarPageState extends State<BottomBarPage> {
               currentIndex: _selectedPageIndex,
               items: [
                 BottomNavigationBarItem(
-                    icon: Icon(Icons.home), label: "Home"),
+                    icon: Icon(KAppIcons.home), label: "Home"),
                 BottomNavigationBarItem(
-                    icon: Icon(Icons.rss_feed), label: "Feeds"),
+                    icon: Icon(KAppIcons.feeds), label: "Feeds"),
                 BottomNavigationBarItem(
                   activeIcon: null, icon: Icon(null), label: "Search"),
                 BottomNavigationBarItem(
-                    icon: Icon(Icons.shopping_bag), label: "Cart"),
+                    icon: Icon(KAppIcons.cart), label: "Cart"),
                 BottomNavigationBarItem(
-                    icon: Icon(Icons.person), label: "User"),
+                    icon: Icon(KAppIcons.user), label: "User"),
               ],
             ),
           ),
@@ -76,7 +78,7 @@ class _BottomBarPageState extends State<BottomBarPage> {
           splashColor: Colors.grey,
           tooltip: "Search",
           elevation: 4,
-          child: Icon(Icons.search),
+          child: Icon(KAppIcons.search),
           onPressed: () {
             setState(
               () {
