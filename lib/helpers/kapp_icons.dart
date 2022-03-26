@@ -27,4 +27,6 @@ class KAppIcons {
 
   // Home icons
   static const menu = MdiIcons.menu;
+  static const chevronRight = MdiIcons.chevronRight;
+  static const chevronLeft = MdiIcons.chevronLeft;
 }
