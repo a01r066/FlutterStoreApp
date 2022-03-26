@@ -21,4 +21,7 @@ class KAppIcons {
   static const wishlist = MdiIcons.heartMultipleOutline;
   static const cartHeart = MdiIcons.cartHeart;
 
+  // Cart icons
+  static const delete = MdiIcons.delete;
+  static const close = MdiIcons.close;
 }

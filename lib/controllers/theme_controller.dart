@@ -6,12 +6,12 @@ class ThemeController extends GetxController {
   final _isDarkMode = false.obs;
   bool get isDarkMode => _isDarkMode.value;
 
-  Future<void> getDarkMode() async {
+  Future<void> getTheme() async {
     final value = await _storageController.readTheme('isDarkMode');
     _isDarkMode.value = value;
   }
 
-  Future<void> setDarkMode(bool value) async {
+  Future<void> setTheme(bool value) async {
     _isDarkMode.value = value;
     await _storageController.writeTheme('isDarkMode', value);
   }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_store_app/controllers/theme_controller.dart';
 import 'package:flutter_store_app/helpers/kapp_icons.dart';
-import 'package:flutter_store_app/pages/widgets/user_tile_widget.dart';
+import 'package:flutter_store_app/pages/widgets/user_info_widget.dart';
 import 'package:get/get.dart';
 import '../helpers/kcolors.dart';
 
@@ -129,22 +129,22 @@ class _UserInfoPageState extends State<UserInfoPage> {
                         thickness: 0.5,
                         color: Colors.grey,
                       ),
-                      UserTileWidget(
+                      UserInfoWidget(
                         icon: KAppIcons.email,
                         title: "Email",
                         subTitle: "Email sub",
                       ),
-                      UserTileWidget(
+                      UserInfoWidget(
                         icon: KAppIcons.phone,
                         title: "Phone",
                         subTitle: "1-111-222-3",
                       ),
-                      UserTileWidget(
+                      UserInfoWidget(
                         icon: KAppIcons.address,
                         title: "Shipping address",
                         subTitle: "123 Pasteur st",
                       ),
-                      UserTileWidget(
+                      UserInfoWidget(
                         icon: KAppIcons.date,
                         title: "Joined date",
                         subTitle: "01/01/1991",
@@ -162,7 +162,7 @@ class _UserInfoPageState extends State<UserInfoPage> {
                         onSwitch: (value) {
                           setState(
                             () {
-                              themeController.setDarkMode(value);
+                              themeController.setTheme(value);
                             },
                           );
                         },

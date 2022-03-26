@@ -22,7 +22,7 @@ class _AppWidgetState extends State<AppWidget> {
 
   @override
   void initState() {
-    _selectedPageIndex = 4;
+    _selectedPageIndex = 3;
     _pages = [
       {'page': HomePage()},
       {'page': FeedsPage()},
@@ -30,7 +30,7 @@ class _AppWidgetState extends State<AppWidget> {
       {'page': CartPage()},
       {'page': UserInfoPage()},
     ];
-    _themeController.getDarkMode();
+    _themeController.getTheme();
     super.initState();
   }
 
@@ -49,32 +49,30 @@ class _AppWidgetState extends State<AppWidget> {
             notchMargin: 0.01,
             clipBehavior: Clip.antiAlias,
             child: Container(
-              child: Container(
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  // border: Border(
-                  //   top: BorderSide(color: Colors.grey, width: 0.5),
-                  // ),
-                ),
-                child: BottomNavigationBar(
-                  onTap: _selectPage,
-                  backgroundColor: Theme.of(context).primaryColor,
-                  unselectedItemColor: Theme.of(context).textSelectionColor,
-                  selectedItemColor: Colors.purple,
-                  currentIndex: _selectedPageIndex,
-                  items: [
-                    BottomNavigationBarItem(
-                        icon: Icon(KAppIcons.home), label: "Home"),
-                    BottomNavigationBarItem(
-                        icon: Icon(KAppIcons.feeds), label: "Feeds"),
-                    BottomNavigationBarItem(
-                      activeIcon: null, icon: Icon(null), label: "Search"),
-                    BottomNavigationBarItem(
-                        icon: Icon(KAppIcons.cart), label: "Cart"),
-                    BottomNavigationBarItem(
-                        icon: Icon(KAppIcons.user), label: "User"),
-                  ],
-                ),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                // border: Border(
+                //   top: BorderSide(color: Colors.grey, width: 0.5),
+                // ),
+              ),
+              child: BottomNavigationBar(
+                onTap: _selectPage,
+                backgroundColor: Theme.of(context).primaryColor,
+                unselectedItemColor: Theme.of(context).textSelectionColor,
+                selectedItemColor: Colors.purple,
+                currentIndex: _selectedPageIndex,
+                items: [
+                  BottomNavigationBarItem(
+                      icon: Icon(KAppIcons.home), label: "Home"),
+                  BottomNavigationBarItem(
+                      icon: Icon(KAppIcons.feeds), label: "Feeds"),
+                  BottomNavigationBarItem(
+                    activeIcon: null, icon: Icon(null), label: "Search"),
+                  BottomNavigationBarItem(
+                      icon: Icon(KAppIcons.cart), label: "Cart"),
+                  BottomNavigationBarItem(
+                      icon: Icon(KAppIcons.user), label: "User"),
+                ],
               ),
             ),
           ),

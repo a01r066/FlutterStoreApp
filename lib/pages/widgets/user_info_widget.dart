@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_store_app/helpers/kapp_icons.dart';
 
-class UserTileWidget extends StatefulWidget {
+class UserInfoWidget extends StatefulWidget {
   final IconData icon;
   final String title;
   final String subTitle;
 
-  const UserTileWidget({
+  const UserInfoWidget({
     Key? key,
     required this.icon,
     required this.title,
@@ -14,10 +14,10 @@ class UserTileWidget extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<UserTileWidget> createState() => _UserTileWidgetState();
+  State<UserInfoWidget> createState() => _UserInfoWidgetState();
 }
 
-class _UserTileWidgetState extends State<UserTileWidget> {
+class _UserInfoWidgetState extends State<UserInfoWidget> {
   @override
   Widget build(BuildContext context) {
     return Material(
