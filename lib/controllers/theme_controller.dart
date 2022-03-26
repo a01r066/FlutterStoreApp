@@ -6,6 +6,9 @@ class ThemeController extends GetxController {
   final _isDarkMode = false.obs;
   bool get isDarkMode => _isDarkMode.value;
 
+  // Sliding menu
+  var isMenuShowed = false.obs;
+
   Future<void> getTheme() async {
     final value = await _storageController.readTheme('isDarkMode');
     _isDarkMode.value = value;

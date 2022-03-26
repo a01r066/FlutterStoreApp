@@ -24,4 +24,7 @@ class KAppIcons {
   // Cart icons
   static const delete = MdiIcons.delete;
   static const close = MdiIcons.close;
+
+  // Home icons
+  static const menu = MdiIcons.menu;
 }
