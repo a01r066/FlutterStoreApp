@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_store_app/controllers/theme_controller.dart';
 import 'package:flutter_store_app/helpers/kapp_icons.dart';
+import 'package:flutter_store_app/models/user_info_item.dart';
 import 'package:flutter_store_app/pages/widgets/user_info_widget.dart';
 import 'package:get/get.dart';
 import '../helpers/kcolors.dart';
@@ -15,6 +16,19 @@ class _UserInfoPageState extends State<UserInfoPage> {
 
   late ScrollController _scrollController;
   var top = 0.0;
+
+  List<UserInfoItem> userInfoItems = [
+    UserInfoItem(
+        title: "Email", subTitle: "Email sub", iconData: KAppIcons.email),
+    UserInfoItem(
+        title: "Phone", subTitle: "1-111-222-3", iconData: KAppIcons.phone),
+    UserInfoItem(
+        title: "Shipping address",
+        subTitle: "123 Pasteur st",
+        iconData: KAppIcons.address),
+    UserInfoItem(
+        title: "Joined date", subTitle: "01/01/1991", iconData: KAppIcons.date),
+  ];
 
   @override
   void initState() {
@@ -90,7 +104,6 @@ class _UserInfoPageState extends State<UserInfoPage> {
                                     width: 12,
                                   ),
                                   Text(
-                                    // 'top.toString()',
                                     'Guest',
                                     style: TextStyle(
                                         fontSize: 20.0, color: Colors.white),
@@ -129,25 +142,18 @@ class _UserInfoPageState extends State<UserInfoPage> {
                         thickness: 0.5,
                         color: Colors.grey,
                       ),
-                      UserInfoWidget(
-                        icon: KAppIcons.email,
-                        title: "Email",
-                        subTitle: "Email sub",
-                      ),
-                      UserInfoWidget(
-                        icon: KAppIcons.phone,
-                        title: "Phone",
-                        subTitle: "1-111-222-3",
-                      ),
-                      UserInfoWidget(
-                        icon: KAppIcons.address,
-                        title: "Shipping address",
-                        subTitle: "123 Pasteur st",
-                      ),
-                      UserInfoWidget(
-                        icon: KAppIcons.date,
-                        title: "Joined date",
-                        subTitle: "01/01/1991",
+                      ListView.builder(
+                        itemBuilder: (context, index) {
+                          final item = userInfoItems[index];
+                          return UserInfoWidget(
+                            title: item.title,
+                            subTitle: item.subTitle,
+                            icon: item.iconData,
+                          );
+                        },
+                        itemCount: userInfoItems.length,
+                        shrinkWrap: true,
+                        physics: ClampingScrollPhysics(),
                       ),
                       UserTile("User setting"),
                       Divider(

@@ -21,6 +21,7 @@ class _CartPageState extends State<CartPage> {
           IconButton(onPressed: (){
             print("Delete");
           }, icon: Icon(KAppIcons.delete),),
+          Icon(null,),
         ],
       ),
       body: Container(

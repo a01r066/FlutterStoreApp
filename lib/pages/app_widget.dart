@@ -22,7 +22,7 @@ class _AppWidgetState extends State<AppWidget> {
 
   @override
   void initState() {
-    _selectedPageIndex = 3;
+    _selectedPageIndex = 1;
     _pages = [
       {'page': HomePage()},
       {'page': FeedsPage()},

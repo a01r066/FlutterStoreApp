@@ -8,9 +8,9 @@ class UserInfoWidget extends StatefulWidget {
 
   const UserInfoWidget({
     Key? key,
-    required this.icon,
     required this.title,
     required this.subTitle,
+    required this.icon,
   }) : super(key: key);
 
   @override
@@ -43,7 +43,6 @@ Widget UserTile(String title) {
     style: TextStyle(
       fontSize: 20.0,
       fontWeight: FontWeight.bold,
-      color: Colors.black87,
     ),
   );
 }

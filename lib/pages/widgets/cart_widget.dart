@@ -58,13 +58,11 @@ Widget CartItemWidget(BuildContext context) {
                 children: [
                   Text(
                     "Total: \$450.0",
-                    style: TextStyle(
-                        color: Theme.of(context).colorScheme.secondary),
+                    // style: TextStyle(color: Theme.of(context).colorScheme.secondary),
                   ),
                   Text(
                     "SubTotal: \$245.0",
-                    style: TextStyle(
-                        color: Theme.of(context).colorScheme.secondary),
+                    // style: TextStyle(color: Theme.of(context).colorScheme.secondary),
                   ),
                 ],
               ),
@@ -94,18 +92,20 @@ Widget CartItemWidget(BuildContext context) {
                       Container(
                         width: 52.0,
                         decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(4.0),
-                            gradient: LinearGradient(colors: [
-                              KColors.gradiendFStart,
-                              KColors.gradiendFEnd
-                            ])),
+                          borderRadius: BorderRadius.circular(4.0),
+                          gradient: LinearGradient(
+                            colors: [
+                              KColors.gradiendLStart,
+                              KColors.gradiendLEnd
+                            ],
+                          ),
+                        ),
                         child: Padding(
                           padding: const EdgeInsets.all(4.0),
                           child: Text(
                             "1",
-                            style: TextStyle(
-                              fontSize: 20.0,
-                            ),
+                            style:
+                                TextStyle(fontSize: 20.0, color: Colors.white),
                             overflow: TextOverflow.ellipsis,
                             textAlign: TextAlign.center,
                           ),
