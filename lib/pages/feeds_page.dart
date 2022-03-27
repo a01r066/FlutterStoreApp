@@ -1,6 +1,5 @@
 import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:flutter_store_app/helpers/kapp_icons.dart';
 import 'package:flutter_store_app/pages/widgets/feeds_widget.dart';
 

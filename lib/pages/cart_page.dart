@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_store_app/pages/widgets/cart_widget.dart';
-
 import '../helpers/kapp_icons.dart';
 
 class CartPage extends StatefulWidget {

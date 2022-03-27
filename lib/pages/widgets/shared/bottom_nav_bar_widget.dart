@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_store_app/controllers/main_controller.dart';
 import 'package:get/get.dart';
-
 import '../../../helpers/kapp_icons.dart';
 
 class BottomNavBarWidget extends StatefulWidget {

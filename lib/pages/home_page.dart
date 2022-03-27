@@ -13,11 +13,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final themeController = Get.find<ThemeController>();
-
-  @override
-  void initState() {
-    super.initState();
-  }
+  final mainController = Get.find<MainController>();
 
   @override
   Widget build(BuildContext context) {
@@ -26,11 +22,8 @@ class _HomePageState extends State<HomePage> {
           appBar: AppBar(
             title: Text("Home"),
             leading: IconButton(
-              onPressed: () {
-                setState(() {
-                  themeController.isMenuShowed.value =
-                      !themeController.isMenuShowed.value;
-                });
+              onPressed: (){
+                mainController.sidebarAnimationController.forward();
               },
               icon: Icon(themeController.isMenuShowed.value
                   ? KAppIcons.home

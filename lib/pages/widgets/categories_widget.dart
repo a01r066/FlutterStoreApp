@@ -48,22 +48,24 @@ Widget CategoriesItemWidget(BuildContext context, int item) {
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Container(
-          constraints: BoxConstraints(
-            minHeight: 64.0,
-            maxHeight: 124.0,
-          ),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(8.0),
-              topRight: Radius.circular(8.0),
+        ClipRect(
+          child: Container(
+            constraints: BoxConstraints(
+              minHeight: 64.0,
+              maxHeight: 124.0,
             ),
-            image: DecorationImage(
-              image: AssetImage('assets/images/CatWatches.jpg'),
-              fit: BoxFit.fill,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(8.0),
+                topRight: Radius.circular(8.0),
+              ),
+              image: DecorationImage(
+                image: AssetImage('assets/images/CatWatches.jpg'),
+                fit: BoxFit.fill,
+              ),
             ),
+            width: double.infinity,
           ),
-          width: double.infinity,
         ),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 8.0),

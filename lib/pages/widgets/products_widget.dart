@@ -43,16 +43,18 @@ Widget ProductsItemWidget(BuildContext context, int item) {
       children: [
         Stack(
           children: [
-            Container(
-              constraints: BoxConstraints(
-                minHeight: 96.0,
-                maxHeight: 148.0,
+            ClipRect(
+              child: Container(
+                constraints: BoxConstraints(
+                  minHeight: 96.0,
+                  maxHeight: 148.0,
+                ),
+                decoration: BoxDecoration(
+                    image: DecorationImage(
+                  image: AssetImage('assets/images/CatFurniture.jpg'),
+                  fit: BoxFit.fill,
+                )),
               ),
-              decoration: BoxDecoration(
-                  image: DecorationImage(
-                image: AssetImage('assets/images/CatFurniture.jpg'),
-                fit: BoxFit.fill,
-              )),
             ),
             Positioned(
               right: 8.0,

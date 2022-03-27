@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 
 class BrandsWidget extends StatefulWidget {
   @override
@@ -41,7 +40,7 @@ Widget BrandsItemWidget({required BuildContext context, required int item}) {
       color: Theme.of(context).scaffoldBackgroundColor,
       borderRadius: BorderRadius.circular(8.0),
       image: DecorationImage(
-        image: AssetImage('assets/images/apple.jpg'),
+        image: AssetImage('assets/images/h&m.jpg'),
         fit: BoxFit.fill,
       ),
     ),
