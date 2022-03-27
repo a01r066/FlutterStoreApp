@@ -1,6 +1,5 @@
 import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_store_app/helpers/kapp_icons.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 Widget FeedsCardWidget(BuildContext context) {
@@ -25,11 +24,12 @@ Widget FeedsCardWidget(BuildContext context) {
                         minHeight: 100.0,
                         maxHeight: 170.0),
                     child:
-                      Image.asset('assets/images/CatWatches.jpg', fit: BoxFit.fitWidth,),
+                      Image.asset('assets/images/CatWatches.jpg', fit: BoxFit.fill,),
                     // Image.network(
                     //   'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4PdHtXka2-bDDww6Nuect3Mt9IwpE4v4HNw&usqp=CAU',
                     //   fit: BoxFit.fitWidth,
                     // ),
+                    width: double.infinity,
                   ),
                   Positioned(
                     top: 12.0,
