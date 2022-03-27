@@ -31,7 +31,7 @@ class _BannerCarouselWidgetState extends State<BannerCarouselWidget> {
             options: CarouselOptions(
               aspectRatio: 16 / 9,
               viewportFraction: 0.8,
-              initialPage: mainController.currentPage,
+              initialPage: mainController.currentBannerIndex,
               enableInfiniteScroll: true,
               reverse: false,
               autoPlay: true,
@@ -40,7 +40,7 @@ class _BannerCarouselWidgetState extends State<BannerCarouselWidget> {
               autoPlayCurve: Curves.fastOutSlowIn,
               enlargeCenterPage: true,
               onPageChanged: (index, _) {
-                mainController.setCurrentPage(index);
+                mainController.setCurrentBannerIndex(index);
               },
               scrollDirection: Axis.horizontal,
             ),
@@ -59,7 +59,7 @@ class _BannerCarouselWidgetState extends State<BannerCarouselWidget> {
               //     duration: Duration(microseconds: 300),
               //     curve: Curves.linear);
               carouselController.animateToPage(
-                  mainController.currentPage - 1,
+                  mainController.currentBannerIndex - 1,
                   duration: Duration(milliseconds: 300),
                   curve: Curves.linear);
             },
@@ -79,7 +79,7 @@ class _BannerCarouselWidgetState extends State<BannerCarouselWidget> {
               //     duration: Duration(microseconds: 300),
               //     curve: Curves.linear);
               carouselController.animateToPage(
-                  mainController.currentPage + 1,
+                  mainController.currentBannerIndex + 1,
                   duration: Duration(milliseconds: 300),
                   curve: Curves.linear);
             },

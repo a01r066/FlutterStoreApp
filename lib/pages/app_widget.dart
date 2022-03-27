@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_store_app/controllers/main_controller.dart';
 import 'package:flutter_store_app/controllers/theme_controller.dart';
 import 'package:flutter_store_app/helpers/kapp_icons.dart';
 import 'package:flutter_store_app/pages/cart_page.dart';
@@ -6,6 +7,7 @@ import 'package:flutter_store_app/pages/feeds_page.dart';
 import 'package:flutter_store_app/pages/home_page.dart';
 import 'package:flutter_store_app/pages/search_page.dart';
 import 'package:flutter_store_app/pages/user_info_page.dart';
+import 'package:flutter_store_app/pages/widgets/shared/bottom_nav_bar_widget.dart';
 import 'package:get/get.dart';
 import '../helpers/theme_data.dart';
 
@@ -15,14 +17,13 @@ class AppWidget extends StatefulWidget {
 }
 
 class _AppWidgetState extends State<AppWidget> {
-  final _themeController = Get.find<ThemeController>();
+  final themeController = Get.find<ThemeController>();
+  final mainController = Get.find<MainController>();
 
-  int _selectedPageIndex = 0;
   late List<Map<String, Widget>> _pages;
 
   @override
   void initState() {
-    _selectedPageIndex = 0;
     _pages = [
       {'page': HomePage()},
       {'page': FeedsPage()},
@@ -30,7 +31,7 @@ class _AppWidgetState extends State<AppWidget> {
       {'page': CartPage()},
       {'page': UserInfoPage()},
     ];
-    _themeController.getTheme();
+    themeController.getTheme();
     super.initState();
   }
 
@@ -39,42 +40,16 @@ class _AppWidgetState extends State<AppWidget> {
     return Obx(() =>
       GetMaterialApp(
         debugShowCheckedModeBanner: false,
-          theme: Styles.themeData(_themeController.isDarkMode, context),
+          theme: Styles.themeData(themeController.isDarkMode, context),
         home: Scaffold(
           body: Container(
-            child: _pages[_selectedPageIndex]['page'],
+            child: _pages[mainController.currentPageIndex]['page'],
           ),
           bottomNavigationBar: BottomAppBar(
             shape: CircularNotchedRectangle(),
             notchMargin: 0.01,
             clipBehavior: Clip.antiAlias,
-            child: Container(
-              decoration: BoxDecoration(
-                color: Colors.white,
-                // border: Border(
-                //   top: BorderSide(color: Colors.grey, width: 0.5),
-                // ),
-              ),
-              child: BottomNavigationBar(
-                onTap: _selectPage,
-                backgroundColor: Theme.of(context).primaryColor,
-                unselectedItemColor: Theme.of(context).textSelectionColor,
-                selectedItemColor: Colors.purple,
-                currentIndex: _selectedPageIndex,
-                items: [
-                  BottomNavigationBarItem(
-                      icon: Icon(KAppIcons.home), label: "Home"),
-                  BottomNavigationBarItem(
-                      icon: Icon(KAppIcons.feeds), label: "Feeds"),
-                  BottomNavigationBarItem(
-                    activeIcon: null, icon: Icon(null), label: "Search"),
-                  BottomNavigationBarItem(
-                      icon: Icon(KAppIcons.cart), label: "Cart"),
-                  BottomNavigationBarItem(
-                      icon: Icon(KAppIcons.user), label: "User"),
-                ],
-              ),
-            ),
+            child: BottomNavBarWidget(),
           ),
           floatingActionButtonLocation:
               FloatingActionButtonLocation.miniCenterDocked,
@@ -89,7 +64,7 @@ class _AppWidgetState extends State<AppWidget> {
               onPressed: () {
                 setState(
                   () {
-                    _selectedPageIndex = 2;
+                    mainController.setCurrentPageIndex(2);
                   },
                 );
               },
@@ -98,11 +73,5 @@ class _AppWidgetState extends State<AppWidget> {
         ),
       ),
     );
-  }
-
-  _selectPage(int index) {
-    setState(() {
-      _selectedPageIndex = index;
-    });
   }
 }

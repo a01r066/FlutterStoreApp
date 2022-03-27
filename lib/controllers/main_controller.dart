@@ -1,9 +1,17 @@
 import 'package:get/get.dart';
 
 class MainController extends GetxController {
-   final _currentPage = 0.obs;
-   int get currentPage => _currentPage.value;
-   setCurrentPage(int page){
-     _currentPage.value = page;
+  // Bottom navigation bar
+  final _currentPageIndex = 0.obs;
+  int get currentPageIndex => _currentPageIndex.value;
+  setCurrentPageIndex(int page){
+    _currentPageIndex.value = page;
+  }
+
+  // Banner carousel
+   final _currentBannerIndex = 0.obs;
+   int get currentBannerIndex => _currentBannerIndex.value;
+   setCurrentBannerIndex(int page){
+     _currentBannerIndex.value = page;
    }
 }
