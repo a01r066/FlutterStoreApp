@@ -37,16 +37,6 @@ class _UserInfoWidgetState extends State<UserInfoWidget> {
   }
 }
 
-Widget UserTile(String title) {
-  return Text(
-    title,
-    style: TextStyle(
-      fontSize: 20.0,
-      fontWeight: FontWeight.bold,
-    ),
-  );
-}
-
 Widget UserSetting({required IconData icon, required String title, required bool isOn, required bool isHidden, required Function(bool) onSwitch}){
   return ListTile(
     title: Text(title),

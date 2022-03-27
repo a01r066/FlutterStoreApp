@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_store_app/controllers/theme_controller.dart';
 import 'package:flutter_store_app/helpers/kapp_icons.dart';
 import 'package:flutter_store_app/models/user_info_item.dart';
+import 'package:flutter_store_app/pages/widgets/shared/shared_widget.dart';
 import 'package:flutter_store_app/pages/widgets/user_info_widget.dart';
 import 'package:get/get.dart';
 import '../helpers/kcolors.dart';
@@ -130,14 +131,14 @@ class _UserInfoPageState extends State<UserInfoPage> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      UserTile("User bag"),
+                      HeaderWidget(title: "User bag"),
                       Divider(
                         thickness: 0.5,
                         color: Colors.grey,
                       ),
                       UserBag(icon: KAppIcons.wishlist, title: "Wishlist"),
                       UserBag(icon: KAppIcons.cartHeart, title: "Cart"),
-                      UserTile("User info"),
+                      HeaderWidget(title: "User info"),
                       Divider(
                         thickness: 0.5,
                         color: Colors.grey,
@@ -155,7 +156,7 @@ class _UserInfoPageState extends State<UserInfoPage> {
                         shrinkWrap: true,
                         physics: ClampingScrollPhysics(),
                       ),
-                      UserTile("User setting"),
+                      HeaderWidget(title: "User setting"),
                       Divider(
                         thickness: 0.5,
                         color: Colors.grey,

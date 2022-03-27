@@ -29,4 +29,5 @@ class KAppIcons {
   static const menu = MdiIcons.menu;
   static const chevronRight = MdiIcons.chevronRight;
   static const chevronLeft = MdiIcons.chevronLeft;
+  static const viewMore = MdiIcons.dotsHorizontal;
 }
