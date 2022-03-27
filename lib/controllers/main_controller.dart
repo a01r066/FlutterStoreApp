@@ -17,5 +17,10 @@ class MainController extends GetxController {
   }
 
   // Sidebar
+  final _isSidebarHidden = true.obs;
+  bool get isSidebarHidden => _isSidebarHidden.value;
+  setSidebarHidden(bool value){
+    _isSidebarHidden.value = value;
+  }
   late AnimationController sidebarAnimationController;
 }

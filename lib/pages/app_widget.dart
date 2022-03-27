@@ -25,10 +25,8 @@ class _AppWidgetState extends State<AppWidget> with TickerProviderStateMixin {
 
   late Animation<Offset> sidebarAnimation;
   late Animation<double> fadeAnimation;
+
   // late AnimationController sidebarAnimationController;
-
-  var sidebarHidden = true;
-
   @override
   void initState() {
     _pages = [
@@ -50,14 +48,16 @@ class _AppWidgetState extends State<AppWidget> with TickerProviderStateMixin {
       begin: Offset(-1, 0),
       end: Offset(0, 0),
     ).animate(CurvedAnimation(
-        parent: mainController.sidebarAnimationController, curve: Curves.easeInOut));
+        parent: mainController.sidebarAnimationController,
+        curve: Curves.easeInOut));
 
     fadeAnimation = Tween<double>(
       begin: 0.0,
       end: 1.0,
     ).animate(
       CurvedAnimation(
-          parent: mainController.sidebarAnimationController, curve: Curves.easeInOut),
+          parent: mainController.sidebarAnimationController,
+          curve: Curves.easeInOut),
     );
 
     super.initState();
