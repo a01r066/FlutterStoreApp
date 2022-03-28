@@ -19,9 +19,7 @@ class _$UserInfoItemTearOff {
   const _$UserInfoItemTearOff();
 
   _UserInfoItem call(
-      {required String title,
-      required String subTitle,
-      required IconData iconData}) {
+      {required String title, String? subTitle, required IconData iconData}) {
     return _UserInfoItem(
       title: title,
       subTitle: subTitle,
@@ -36,7 +34,7 @@ const $UserInfoItem = _$UserInfoItemTearOff();
 /// @nodoc
 mixin _$UserInfoItem {
   String get title => throw _privateConstructorUsedError;
-  String get subTitle => throw _privateConstructorUsedError;
+  String? get subTitle => throw _privateConstructorUsedError;
   IconData get iconData => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -49,7 +47,7 @@ abstract class $UserInfoItemCopyWith<$Res> {
   factory $UserInfoItemCopyWith(
           UserInfoItem value, $Res Function(UserInfoItem) then) =
       _$UserInfoItemCopyWithImpl<$Res>;
-  $Res call({String title, String subTitle, IconData iconData});
+  $Res call({String title, String? subTitle, IconData iconData});
 }
 
 /// @nodoc
@@ -74,7 +72,7 @@ class _$UserInfoItemCopyWithImpl<$Res> implements $UserInfoItemCopyWith<$Res> {
       subTitle: subTitle == freezed
           ? _value.subTitle
           : subTitle // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       iconData: iconData == freezed
           ? _value.iconData
           : iconData // ignore: cast_nullable_to_non_nullable
@@ -90,7 +88,7 @@ abstract class _$UserInfoItemCopyWith<$Res>
           _UserInfoItem value, $Res Function(_UserInfoItem) then) =
       __$UserInfoItemCopyWithImpl<$Res>;
   @override
-  $Res call({String title, String subTitle, IconData iconData});
+  $Res call({String title, String? subTitle, IconData iconData});
 }
 
 /// @nodoc
@@ -117,7 +115,7 @@ class __$UserInfoItemCopyWithImpl<$Res> extends _$UserInfoItemCopyWithImpl<$Res>
       subTitle: subTitle == freezed
           ? _value.subTitle
           : subTitle // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       iconData: iconData == freezed
           ? _value.iconData
           : iconData // ignore: cast_nullable_to_non_nullable
@@ -129,14 +127,13 @@ class __$UserInfoItemCopyWithImpl<$Res> extends _$UserInfoItemCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_UserInfoItem extends _UserInfoItem {
-  _$_UserInfoItem(
-      {required this.title, required this.subTitle, required this.iconData})
+  _$_UserInfoItem({required this.title, this.subTitle, required this.iconData})
       : super._();
 
   @override
   final String title;
   @override
-  final String subTitle;
+  final String? subTitle;
   @override
   final IconData iconData;
 
@@ -171,14 +168,14 @@ class _$_UserInfoItem extends _UserInfoItem {
 abstract class _UserInfoItem extends UserInfoItem {
   factory _UserInfoItem(
       {required String title,
-      required String subTitle,
+      String? subTitle,
       required IconData iconData}) = _$_UserInfoItem;
   _UserInfoItem._() : super._();
 
   @override
   String get title;
   @override
-  String get subTitle;
+  String? get subTitle;
   @override
   IconData get iconData;
   @override

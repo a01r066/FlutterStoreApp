@@ -156,7 +156,7 @@ class _UserInfoPageState extends State<UserInfoPage> {
                           final item = userInfoItems[index];
                           return UserInfoWidget(
                             title: item.title,
-                            subTitle: item.subTitle,
+                            subTitle: item.subTitle ?? "",
                             icon: item.iconData,
                           );
                         },

@@ -22,8 +22,8 @@ Widget FeedsCardWidget(BuildContext context) {
                   ClipRect(
                     child: Container(
                       constraints: BoxConstraints(
-                          minHeight: 100.0,
-                          maxHeight: 170.0),
+                          minHeight: 96.0,
+                          maxHeight: 155.0),
                       child:
                         Image.asset('assets/images/CatWatches.jpg', fit: BoxFit.fill,),
                       // Image.network(
