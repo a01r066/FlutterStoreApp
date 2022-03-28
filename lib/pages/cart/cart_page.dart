@@ -9,7 +9,7 @@ class CartPage extends StatefulWidget {
 }
 
 class _CartPageState extends State<CartPage> {
-  List products = [];
+  List items = [1, 2, 3, 4, 5, 6];
   final emptyPage = EmptyPage(
     title: "Your cart is empty!",
     description: "Look like you haven't add any items in your cart yet!",
@@ -22,7 +22,7 @@ class _CartPageState extends State<CartPage> {
 
   @override
   Widget build(BuildContext context) {
-    return products.isEmpty
+    return items.isEmpty
         ? Scaffold(
             body: emptyPage,
           )
@@ -53,7 +53,7 @@ class _CartPageState extends State<CartPage> {
                 },
                 physics: ClampingScrollPhysics(),
                 shrinkWrap: true,
-                itemCount: 10,
+                itemCount: items.length,
               ),
             ),
             bottomSheet: Padding(

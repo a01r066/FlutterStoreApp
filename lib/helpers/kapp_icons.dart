@@ -32,17 +32,15 @@ class KAppIcons {
   static const chevronLeft = MdiIcons.chevronLeft;
   static const viewMore = MdiIcons.dotsHorizontal;
 
-  // Sidebar
+  // Sidebar icons
   static const unlock = MdiIcons.lockOpenVariant;
   static const cartCheck = MdiIcons.cartCheck;
   static const tune = MdiIcons.tune;
 
-  // Colors from DesignCodeIo
-  // static const kBackgroundColor = Color(0xFFE7EEFB);
-  // static const kSidebarBackgroundColor = Color(0xFFF1F4FB);
-  // static const kCardPopupBackgroundColor = Color(0xFFF5F8FF);
-  // static const kPrimaryLabelColor = Color(0xFF242629);
-  // static const kSecondaryLabelColor = Color(0xFF797F8A);
-  // static const kShadowColor = Color.fromRGBO(72, 76, 82, 0.16);
-  // static const kCourseElementIconColor = Color(0xFF17294D);
+  // Header icons
+  static const arrowLeft = MdiIcons.arrowLeft;
+  static const heartEmpty = MdiIcons.heartOutline;
+  static const cartFill = MdiIcons.cart;
+  static const save = MdiIcons.contentSaveOutline;
+  static const share = MdiIcons.shareVariant;
 }

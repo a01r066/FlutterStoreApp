@@ -26,11 +26,20 @@ class _HomeWidgetState extends State<HomeWidget> {
             padding: const EdgeInsets.symmetric(vertical: 12.0),
             child: BannerCarouselWidget(),
           ),
-          HeaderWidget(title: "Categories", iconData: KAppIcons.viewMore),
+          Padding(
+            padding: const EdgeInsets.all(12.0),
+            child: HeaderWidget(title: "Categories", iconData: KAppIcons.viewMore),
+          ),
           CategoriesWidget(),
-          HeaderWidget(title: "Popular brands", iconData: KAppIcons.viewMore),
+          Padding(
+            padding: const EdgeInsets.all(12.0),
+            child: HeaderWidget(title: "Popular brands", iconData: KAppIcons.viewMore),
+          ),
           BrandsWidget(),
-          HeaderWidget(title: "Popular products", iconData: KAppIcons.viewMore),
+          Padding(
+            padding: const EdgeInsets.all(12.0),
+            child: HeaderWidget(title: "Popular products", iconData: KAppIcons.viewMore),
+          ),
           ProductsWidget(),
         ],
       ),

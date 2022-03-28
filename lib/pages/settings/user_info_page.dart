@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_store_app/controllers/theme_controller.dart';
 import 'package:flutter_store_app/helpers/kapp_icons.dart';
 import 'package:flutter_store_app/models/user_info_item.dart';
+import 'package:flutter_store_app/pages/settings/wishlist_page.dart';
+import 'package:flutter_store_app/pages/shared/empty_page.dart';
 import 'package:flutter_store_app/pages/shared/shared_widget.dart';
 import 'package:flutter_store_app/pages/settings/user_info_widget.dart';
 import 'package:get/get.dart';
@@ -136,8 +138,14 @@ class _UserInfoPageState extends State<UserInfoPage> {
                         thickness: 0.5,
                         color: Colors.grey,
                       ),
-                      UserBag(icon: KAppIcons.wishlist, title: "Wishlist"),
-                      UserBag(icon: KAppIcons.cartHeart, title: "Cart"),
+                      UserBag(icon: KAppIcons.wishlist, title: "Wishlist", callback: (){
+                        Navigator.push(context, MaterialPageRoute(builder: (context) {
+                          return WishlistPage();
+                        }));
+                      }),
+                      UserBag(icon: KAppIcons.cartHeart, title: "Cart", callback: (){
+                        print("cart");
+                      }),
                       HeaderWidget(title: "User info"),
                       Divider(
                         thickness: 0.5,

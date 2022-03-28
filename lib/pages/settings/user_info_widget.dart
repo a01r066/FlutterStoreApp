@@ -52,11 +52,14 @@ Widget UserSetting({required IconData icon, required String title, required bool
   );
 }
 
-Widget UserBag({required IconData icon, required String title}){
-  return ListTile(
-    title: Text(title),
-    leading: Icon(icon),
-    trailing: Icon(KAppIcons.arrowRight),
+Widget UserBag({required IconData icon, required String title, Function()? callback}){
+  return GestureDetector(
+    onTap: callback,
+    child: ListTile(
+      title: Text(title),
+      leading: Icon(icon),
+      trailing: Icon(KAppIcons.arrowRight),
+    ),
   );
 }
 

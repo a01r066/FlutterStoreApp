@@ -2,6 +2,7 @@ import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_store_app/helpers/kapp_icons.dart';
 import 'package:flutter_store_app/pages/feeds/feeds_widget.dart';
+import 'package:get/get.dart';
 
 class FeedsPage extends StatefulWidget {
   @override
@@ -70,7 +71,11 @@ class _FeedsPageState extends State<FeedsPage> {
                 children: List.generate(
                   10,
                   (index) {
-                    return FeedsCardWidget(context);
+                    return GestureDetector(
+                      onTap: (){
+                        Get.toNamed("/product_detail");
+                      },
+                        child: FeedsCardWidget(context));
                   },
                 ),
               ),

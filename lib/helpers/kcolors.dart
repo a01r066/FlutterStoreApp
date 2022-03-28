@@ -20,4 +20,14 @@ class KColors {
   static const gradiendLEnd = Color(0xFFE91E63); //Pink
   static const gradiendLStart = Color(0xFF9C27B0); //purple 500
   static const starterColor = Color(0xFF8E24AA); //purple 600
-  static const purple800 = Color(0xFF6A1B9A);}
+  static const purple800 = Color(0xFF6A1B9A);
+
+  // Colors from DesignCodeIo
+  static const kBackgroundColor = Color(0xFFE7EEFB);
+  static const kSidebarBackgroundColor = Color(0xFFF1F4FB);
+  static const kCardPopupBackgroundColor = Color(0xFFF5F8FF);
+  static const kPrimaryLabelColor = Color(0xFF242629);
+  static const kSecondaryLabelColor = Color(0xFF797F8A);
+  static const kShadowColor = Color.fromRGBO(72, 76, 82, 0.16);
+  static const kCourseElementIconColor = Color(0xFF17294D);
+}
