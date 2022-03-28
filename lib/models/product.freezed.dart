@@ -20,19 +20,23 @@ class _$ProductTearOff {
 
   _Product call(
       {required String id,
-      required Category category,
       required String title,
+      required String categoryId,
       String? description,
       double? price,
+      int? quantity,
+      String? brandId,
       String? imageUrl,
       bool? isFavourite,
       bool? isPopular}) {
     return _Product(
       id: id,
-      category: category,
       title: title,
+      categoryId: categoryId,
       description: description,
       price: price,
+      quantity: quantity,
+      brandId: brandId,
       imageUrl: imageUrl,
       isFavourite: isFavourite,
       isPopular: isPopular,
@@ -46,10 +50,12 @@ const $Product = _$ProductTearOff();
 /// @nodoc
 mixin _$Product {
   String get id => throw _privateConstructorUsedError;
-  Category get category => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
+  String get categoryId => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
   double? get price => throw _privateConstructorUsedError;
+  int? get quantity => throw _privateConstructorUsedError;
+  String? get brandId => throw _privateConstructorUsedError;
   String? get imageUrl => throw _privateConstructorUsedError;
   bool? get isFavourite => throw _privateConstructorUsedError;
   bool? get isPopular => throw _privateConstructorUsedError;
@@ -64,15 +70,15 @@ abstract class $ProductCopyWith<$Res> {
       _$ProductCopyWithImpl<$Res>;
   $Res call(
       {String id,
-      Category category,
       String title,
+      String categoryId,
       String? description,
       double? price,
+      int? quantity,
+      String? brandId,
       String? imageUrl,
       bool? isFavourite,
       bool? isPopular});
-
-  $CategoryCopyWith<$Res> get category;
 }
 
 /// @nodoc
@@ -86,10 +92,12 @@ class _$ProductCopyWithImpl<$Res> implements $ProductCopyWith<$Res> {
   @override
   $Res call({
     Object? id = freezed,
-    Object? category = freezed,
     Object? title = freezed,
+    Object? categoryId = freezed,
     Object? description = freezed,
     Object? price = freezed,
+    Object? quantity = freezed,
+    Object? brandId = freezed,
     Object? imageUrl = freezed,
     Object? isFavourite = freezed,
     Object? isPopular = freezed,
@@ -99,13 +107,13 @@ class _$ProductCopyWithImpl<$Res> implements $ProductCopyWith<$Res> {
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      category: category == freezed
-          ? _value.category
-          : category // ignore: cast_nullable_to_non_nullable
-              as Category,
       title: title == freezed
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
+              as String,
+      categoryId: categoryId == freezed
+          ? _value.categoryId
+          : categoryId // ignore: cast_nullable_to_non_nullable
               as String,
       description: description == freezed
           ? _value.description
@@ -115,6 +123,14 @@ class _$ProductCopyWithImpl<$Res> implements $ProductCopyWith<$Res> {
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
               as double?,
+      quantity: quantity == freezed
+          ? _value.quantity
+          : quantity // ignore: cast_nullable_to_non_nullable
+              as int?,
+      brandId: brandId == freezed
+          ? _value.brandId
+          : brandId // ignore: cast_nullable_to_non_nullable
+              as String?,
       imageUrl: imageUrl == freezed
           ? _value.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
@@ -129,13 +145,6 @@ class _$ProductCopyWithImpl<$Res> implements $ProductCopyWith<$Res> {
               as bool?,
     ));
   }
-
-  @override
-  $CategoryCopyWith<$Res> get category {
-    return $CategoryCopyWith<$Res>(_value.category, (value) {
-      return _then(_value.copyWith(category: value));
-    });
-  }
 }
 
 /// @nodoc
@@ -145,16 +154,15 @@ abstract class _$ProductCopyWith<$Res> implements $ProductCopyWith<$Res> {
   @override
   $Res call(
       {String id,
-      Category category,
       String title,
+      String categoryId,
       String? description,
       double? price,
+      int? quantity,
+      String? brandId,
       String? imageUrl,
       bool? isFavourite,
       bool? isPopular});
-
-  @override
-  $CategoryCopyWith<$Res> get category;
 }
 
 /// @nodoc
@@ -169,10 +177,12 @@ class __$ProductCopyWithImpl<$Res> extends _$ProductCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = freezed,
-    Object? category = freezed,
     Object? title = freezed,
+    Object? categoryId = freezed,
     Object? description = freezed,
     Object? price = freezed,
+    Object? quantity = freezed,
+    Object? brandId = freezed,
     Object? imageUrl = freezed,
     Object? isFavourite = freezed,
     Object? isPopular = freezed,
@@ -182,13 +192,13 @@ class __$ProductCopyWithImpl<$Res> extends _$ProductCopyWithImpl<$Res>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      category: category == freezed
-          ? _value.category
-          : category // ignore: cast_nullable_to_non_nullable
-              as Category,
       title: title == freezed
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
+              as String,
+      categoryId: categoryId == freezed
+          ? _value.categoryId
+          : categoryId // ignore: cast_nullable_to_non_nullable
               as String,
       description: description == freezed
           ? _value.description
@@ -198,6 +208,14 @@ class __$ProductCopyWithImpl<$Res> extends _$ProductCopyWithImpl<$Res>
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
               as double?,
+      quantity: quantity == freezed
+          ? _value.quantity
+          : quantity // ignore: cast_nullable_to_non_nullable
+              as int?,
+      brandId: brandId == freezed
+          ? _value.brandId
+          : brandId // ignore: cast_nullable_to_non_nullable
+              as String?,
       imageUrl: imageUrl == freezed
           ? _value.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
@@ -219,10 +237,12 @@ class __$ProductCopyWithImpl<$Res> extends _$ProductCopyWithImpl<$Res>
 class _$_Product implements _Product {
   const _$_Product(
       {required this.id,
-      required this.category,
       required this.title,
+      required this.categoryId,
       this.description,
       this.price,
+      this.quantity,
+      this.brandId,
       this.imageUrl,
       this.isFavourite,
       this.isPopular});
@@ -230,13 +250,17 @@ class _$_Product implements _Product {
   @override
   final String id;
   @override
-  final Category category;
-  @override
   final String title;
+  @override
+  final String categoryId;
   @override
   final String? description;
   @override
   final double? price;
+  @override
+  final int? quantity;
+  @override
+  final String? brandId;
   @override
   final String? imageUrl;
   @override
@@ -246,7 +270,7 @@ class _$_Product implements _Product {
 
   @override
   String toString() {
-    return 'Product(id: $id, category: $category, title: $title, description: $description, price: $price, imageUrl: $imageUrl, isFavourite: $isFavourite, isPopular: $isPopular)';
+    return 'Product(id: $id, title: $title, categoryId: $categoryId, description: $description, price: $price, quantity: $quantity, brandId: $brandId, imageUrl: $imageUrl, isFavourite: $isFavourite, isPopular: $isPopular)';
   }
 
   @override
@@ -255,11 +279,14 @@ class _$_Product implements _Product {
         (other.runtimeType == runtimeType &&
             other is _Product &&
             const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality().equals(other.category, category) &&
             const DeepCollectionEquality().equals(other.title, title) &&
+            const DeepCollectionEquality()
+                .equals(other.categoryId, categoryId) &&
             const DeepCollectionEquality()
                 .equals(other.description, description) &&
             const DeepCollectionEquality().equals(other.price, price) &&
+            const DeepCollectionEquality().equals(other.quantity, quantity) &&
+            const DeepCollectionEquality().equals(other.brandId, brandId) &&
             const DeepCollectionEquality().equals(other.imageUrl, imageUrl) &&
             const DeepCollectionEquality()
                 .equals(other.isFavourite, isFavourite) &&
@@ -270,10 +297,12 @@ class _$_Product implements _Product {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(category),
       const DeepCollectionEquality().hash(title),
+      const DeepCollectionEquality().hash(categoryId),
       const DeepCollectionEquality().hash(description),
       const DeepCollectionEquality().hash(price),
+      const DeepCollectionEquality().hash(quantity),
+      const DeepCollectionEquality().hash(brandId),
       const DeepCollectionEquality().hash(imageUrl),
       const DeepCollectionEquality().hash(isFavourite),
       const DeepCollectionEquality().hash(isPopular));
@@ -287,10 +316,12 @@ class _$_Product implements _Product {
 abstract class _Product implements Product {
   const factory _Product(
       {required String id,
-      required Category category,
       required String title,
+      required String categoryId,
       String? description,
       double? price,
+      int? quantity,
+      String? brandId,
       String? imageUrl,
       bool? isFavourite,
       bool? isPopular}) = _$_Product;
@@ -298,13 +329,17 @@ abstract class _Product implements Product {
   @override
   String get id;
   @override
-  Category get category;
-  @override
   String get title;
+  @override
+  String get categoryId;
   @override
   String? get description;
   @override
   double? get price;
+  @override
+  int? get quantity;
+  @override
+  String? get brandId;
   @override
   String? get imageUrl;
   @override

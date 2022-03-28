@@ -40,7 +40,10 @@ class _HomeWidgetState extends State<HomeWidget> {
             padding: const EdgeInsets.all(12.0),
             child: HeaderWidget(title: "Popular products", iconData: KAppIcons.viewMore),
           ),
-          ProductsWidget(),
+          Padding(
+            padding: const EdgeInsets.only(bottom: 40.0),
+            child: ProductsWidget(),
+          ),
         ],
       ),
     );

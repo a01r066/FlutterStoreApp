@@ -17,7 +17,7 @@ class _BrandsWidgetState extends State<BrandsWidget> {
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) {
           return Padding(
-            padding: EdgeInsets.symmetric(horizontal: 8.0),
+            padding: EdgeInsets.symmetric(horizontal: 12.0),
             child: GestureDetector(
               onTap: (){
                 print("Tapped: ${items[index]}");
