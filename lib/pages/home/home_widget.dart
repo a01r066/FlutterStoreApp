@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_store_app/helpers/kapp_icons.dart';
-import 'package:flutter_store_app/pages/widgets/brands_widget.dart';
-import 'package:flutter_store_app/pages/widgets/categories_widget.dart';
-import 'package:flutter_store_app/pages/widgets/products_widget.dart';
-import 'package:flutter_store_app/pages/widgets/shared/shared_widget.dart';
+import 'package:flutter_store_app/pages/home/brands_widget.dart';
+import 'package:flutter_store_app/pages/home/categories_widget.dart';
+import 'package:flutter_store_app/pages/cart/products_widget.dart';
+import 'package:flutter_store_app/pages/shared/shared_widget.dart';
 import '../carousels/banner_carousel.dart';
 
 class HomeWidget extends StatefulWidget {

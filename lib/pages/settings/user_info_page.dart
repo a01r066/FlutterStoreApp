@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_store_app/controllers/theme_controller.dart';
 import 'package:flutter_store_app/helpers/kapp_icons.dart';
 import 'package:flutter_store_app/models/user_info_item.dart';
-import 'package:flutter_store_app/pages/widgets/shared/shared_widget.dart';
-import 'package:flutter_store_app/pages/widgets/user_info_widget.dart';
+import 'package:flutter_store_app/pages/shared/shared_widget.dart';
+import 'package:flutter_store_app/pages/settings/user_info_widget.dart';
 import 'package:get/get.dart';
-import '../helpers/kcolors.dart';
+import '../../helpers/kcolors.dart';
 
 class UserInfoPage extends StatefulWidget {
   @override

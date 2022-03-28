@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_store_app/controllers/main_controller.dart';
 import 'package:get/get.dart';
-import '../../../helpers/kapp_icons.dart';
+import '../../helpers/kapp_icons.dart';
 
 class SidebarWidget extends StatefulWidget {
   @override
@@ -10,22 +10,18 @@ class SidebarWidget extends StatefulWidget {
 
 class _SidebarWidgetState extends State<SidebarWidget> {
   final mainController = Get.find<MainController>();
-  List<int> items = [1, 2, 3, 4, 5, 6, 7, 1, 2,];
+  List<int> items = [1, 2, 3, 4, 5, 6, 7,];
 
   @override
   Widget build(BuildContext context) {
-    return Material(
-      child: SingleChildScrollView(
+    return Scaffold(
+      body: SingleChildScrollView(
         child: Container(
           margin: EdgeInsets.only(top: 40.0),
           width: MediaQuery
               .of(context)
               .size
               .width * 1.0,
-          height: MediaQuery
-              .of(context)
-              .size
-              .height * 1.0,
           decoration: BoxDecoration(
             color: Theme.of(context).backgroundColor,
             borderRadius: BorderRadius.only(

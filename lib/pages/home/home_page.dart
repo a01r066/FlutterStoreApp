@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_store_app/controllers/main_controller.dart';
 import 'package:flutter_store_app/controllers/theme_controller.dart';
 import 'package:flutter_store_app/helpers/kapp_icons.dart';
-import 'package:flutter_store_app/pages/widgets/home_widget.dart';
-import 'package:flutter_store_app/pages/widgets/sliding_up_menu.dart';
+import 'package:flutter_store_app/pages/home/home_widget.dart';
+import 'package:flutter_store_app/pages/sidebar/sliding_up_menu.dart';
 import 'package:get/get.dart';
 
 class HomePage extends StatefulWidget {

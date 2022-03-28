@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_store_app/controllers/main_controller.dart';
 import 'package:flutter_store_app/controllers/theme_controller.dart';
 import 'package:flutter_store_app/helpers/kapp_icons.dart';
-import 'package:flutter_store_app/pages/cart_page.dart';
-import 'package:flutter_store_app/pages/feeds_page.dart';
-import 'package:flutter_store_app/pages/home_page.dart';
-import 'package:flutter_store_app/pages/search_page.dart';
-import 'package:flutter_store_app/pages/user_info_page.dart';
-import 'package:flutter_store_app/pages/widgets/shared/bottom_nav_bar_widget.dart';
-import 'package:flutter_store_app/pages/widgets/shared/sidebar_widget.dart';
+import 'package:flutter_store_app/pages/cart/cart_page.dart';
+import 'package:flutter_store_app/pages/feeds/feeds_page.dart';
+import 'package:flutter_store_app/pages/home/home_page.dart';
+import 'package:flutter_store_app/pages/search/search_page.dart';
+import 'package:flutter_store_app/pages/settings/user_info_page.dart';
+import 'package:flutter_store_app/pages/shared/bottom_nav_bar_widget.dart';
+import 'package:flutter_store_app/pages/sidebar/sidebar_widget.dart';
 import 'package:get/get.dart';
-import '../helpers/theme_data.dart';
+import '../../helpers/theme_data.dart';
 
 class AppWidget extends StatefulWidget {
   @override

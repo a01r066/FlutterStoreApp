@@ -1,7 +1,7 @@
 import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_store_app/helpers/kapp_icons.dart';
-import 'package:flutter_store_app/pages/widgets/feeds_widget.dart';
+import 'package:flutter_store_app/pages/feeds/feeds_widget.dart';
 
 class FeedsPage extends StatefulWidget {
   @override
