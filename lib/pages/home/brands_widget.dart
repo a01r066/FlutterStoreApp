@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_store_app/controllers/api_controller.dart';
+import 'package:flutter_store_app/controllers/main_controller.dart';
 import 'package:flutter_store_app/helpers/kconstants.dart';
 import 'package:flutter_store_app/models/brand.dart';
 import 'package:flutter_store_app/pages/brands/brands_page.dart';
@@ -12,6 +13,7 @@ class BrandsWidget extends StatefulWidget {
 
 class _BrandsWidgetState extends State<BrandsWidget> {
   final apiController = Get.find<ApiController>();
+  final mainController = Get.find<MainController>();
   List<Brand> brands = [];
 
   @override
@@ -32,6 +34,7 @@ class _BrandsWidgetState extends State<BrandsWidget> {
             padding: EdgeInsets.symmetric(horizontal: 12.0),
             child: GestureDetector(
               onTap: (){
+                mainController.brandSelectedIndex.value = index;
                 Navigator.push(context, MaterialPageRoute(builder: (context) => BrandsPage(brand: brands[index])));
               },
                 child: BrandCardWidget(brand: brands[index])),

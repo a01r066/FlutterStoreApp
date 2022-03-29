@@ -19,22 +19,23 @@ class BrandsPage extends StatefulWidget {
 class _BrandsPageState extends State<BrandsPage> {
   final apiController = Get.find<ApiController>();
   final mainController = Get.find<MainController>();
-  List<Brand> brands = [];
-  List<Product> products = [];
+  final brands = [].obs;
+  final products = [].obs;
 
   @override
   void initState() {
     super.initState();
-    brands = apiController.getBrands();
-    products =
-        apiController.getProductByBrandId(brands[mainController.brandSelectedIndex.value].id);
+
+    products.value = apiController.getProductByBrandId(widget.brand.id);
   }
 
   @override
   Widget build(BuildContext context) {
+    brands.value = apiController.getBrands();
+
     return Scaffold(
       appBar: AppBar(
-        title: Text("Brands"),
+        title: Text(brands[mainController.brandSelectedIndex.value].title),
       ),
       body: Row(
         children: [
@@ -53,8 +54,11 @@ class _BrandsPageState extends State<BrandsPage> {
                         brand: brands[index],
                         isSelected: index == mainController.brandSelectedIndex.value,
                         callback: () {
-                          print("index: $index");
-                          mainController.brandSelectedIndex.value = index;
+                          setState(() {
+                            mainController.brandSelectedIndex.value = index;
+                            products.value =
+                                apiController.getProductByBrandId(brands[index].id);
+                          });
                         },
                       ),
                     );
@@ -66,25 +70,20 @@ class _BrandsPageState extends State<BrandsPage> {
               ],
             ),
           ),
-          Expanded(
-            child: SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  ListView.builder(
-                    itemBuilder: (context, index) {
-                      return Padding(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 12.0, vertical: 6.0),
-                        child: ProductRowWidget(product: products[index]),
-                      );
-                    },
-                    itemCount: products.length,
-                    shrinkWrap: true,
-                    physics: ClampingScrollPhysics(),
-                  ),
-                ],
-              ),
+          Container(
+            width: MediaQuery.of(context).size.width - 52.0,
+            height: MediaQuery.of(context).size.height,
+            child: ListView.builder(
+              itemBuilder: (context, index) {
+                return Padding(
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 12.0, vertical: 6.0),
+                  child: ProductRowWidget(product: products[index]),
+                );
+              },
+              itemCount: products.length,
+              shrinkWrap: true,
+              physics: ClampingScrollPhysics(),
             ),
           ),
         ],
