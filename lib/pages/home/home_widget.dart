@@ -4,7 +4,7 @@ import 'package:flutter_store_app/pages/home/brands_widget.dart';
 import 'package:flutter_store_app/pages/home/categories_widget.dart';
 import 'package:flutter_store_app/pages/cart/popular_products_widget.dart';
 import 'package:flutter_store_app/pages/shared/shared_widget.dart';
-import '../carousels/banner_carousel.dart';
+import '../banners/banner_carousel.dart';
 
 class HomeWidget extends StatefulWidget {
   @override

@@ -2,6 +2,7 @@ import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_store_app/helpers/kapp_icons.dart';
 import 'package:flutter_store_app/helpers/kconstants.dart';
+import 'package:flutter_store_app/pages/products/product_detail_page.dart';
 import '../../controllers/api_controller.dart';
 import '../../models/product.dart';
 import 'package:get/get.dart';
@@ -26,8 +27,13 @@ class _PopularProductsWidgetState extends State<PopularProductsWidget> {
         itemBuilder: (context, index) {
           return Container(
             margin: const EdgeInsets.symmetric(horizontal: 12.0),
-            child: ProductItemWidget(
-              product: products[index],
+            child: GestureDetector(
+              onTap: (){
+                Navigator.push(context, MaterialPageRoute(builder: (context) => ProductDetailPage(product: products[index])));
+              },
+              child: ProductItemWidget(
+                product: products[index],
+              ),
             ),
           );
         },
@@ -98,8 +104,10 @@ class ProductItemWidget extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  product.categoryId,
-                  style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.w500),
+                  product.title,
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.w500,),
                 ),
                 Divider(),
                 Row(
@@ -107,7 +115,7 @@ class ProductItemWidget extends StatelessWidget {
                   children: [
                     Flexible(
                         child: Text(
-                      product.title,
+                      product.categoryId,
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                     )),

@@ -4,6 +4,7 @@ import 'package:flutter_store_app/controllers/api_controller.dart';
 import 'package:flutter_store_app/helpers/kapp_icons.dart';
 import 'package:flutter_store_app/models/product.dart';
 import 'package:flutter_store_app/pages/products/feeds_widget.dart';
+import 'package:flutter_store_app/pages/products/product_detail_page.dart';
 import 'package:get/get.dart';
 
 class FeedsPage extends StatefulWidget {
@@ -81,7 +82,8 @@ class _FeedsPageState extends State<FeedsPage> {
                     (index) {
                       return GestureDetector(
                         onTap: (){
-                          Get.toNamed("/product_detail");
+                          // Get.toNamed("/product_detail");
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => ProductDetailPage(product: products[index])));
                         },
                           child: ProductItemWidget(product: products[index],));
                     },

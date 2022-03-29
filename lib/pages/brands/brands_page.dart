@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_store_app/controllers/api_controller.dart';
+import 'package:flutter_store_app/helpers/kconstants.dart';
 import 'package:flutter_store_app/models/brand.dart';
 import 'package:flutter_store_app/models/product.dart';
+import 'package:flutter_store_app/pages/products/product_detail_page.dart';
 import 'package:flutter_store_app/pages/shared/shared_widget.dart';
 import 'package:get/get.dart';
 
@@ -78,7 +80,11 @@ class _BrandsPageState extends State<BrandsPage> {
                 return Padding(
                   padding: const EdgeInsets.symmetric(
                       horizontal: 12.0, vertical: 6.0),
-                  child: ProductRowWidget(product: products[index]),
+                  child: GestureDetector(
+                    onTap: (){
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => ProductDetailPage(product: products[index])));
+                    },
+                      child: ProductRowWidget(product: products[index])),
                 );
               },
               itemCount: products.length,
@@ -147,10 +153,20 @@ class ProductRowWidget extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          Image.asset(
-            'assets/images/CatWatches.jpg',
-            fit: BoxFit.contain,
+          // Image.asset(
+          //   product.imageUrl ?? KConstant.noPhoto,
+          //   fit: BoxFit.contain,
+          //   width: 96.0,
+          // ),
+          Container(
             width: 96.0,
+            height: 96.0,
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: NetworkImage(product.imageUrl ?? KConstant.noPhotoNetwork),
+                fit: BoxFit.cover
+              )
+            ),
           ),
           SizedBox(
             width: 12.0,

@@ -36,6 +36,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           MatIconButton(
                             iconData: KAppIcons.arrowLeft,
@@ -43,18 +44,17 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                               Get.back();
                             },
                           ),
-                          Spacer(),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 32.0),
+                          Flexible(
                             child: Text(
                               widget.product.title,
                               style: TextStyle(
                                 fontSize: 16.0,
                                 fontWeight: FontWeight.bold,
                               ),
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
                             ),
                           ),
-                          Spacer(),
                           Row(
                             children: [
                               MatIconButton(

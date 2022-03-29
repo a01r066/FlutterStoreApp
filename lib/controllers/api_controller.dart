@@ -1,3 +1,4 @@
+import 'package:flutter_store_app/models/kbanner.dart';
 import 'package:flutter_store_app/models/brand.dart';
 import 'package:flutter_store_app/models/category.dart';
 import 'package:flutter_store_app/models/product.dart';
@@ -51,7 +52,13 @@ class ApiController extends GetxController {
     return products;
   }
 
+  // Brands
   List<Brand> getBrands(){
     return [...FakeData.shared.brands];
+  }
+
+  // Banners
+  List<KBanner> getBanners(){
+    return [...FakeData.shared.banners];
   }
 }

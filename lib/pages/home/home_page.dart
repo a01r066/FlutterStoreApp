@@ -20,7 +20,7 @@ class _HomePageState extends State<HomePage> {
     return Obx(
       () => Scaffold(
           appBar: AppBar(
-            title: Text("Home"),
+            title: Text("Flutter & GetX"),
             leading: IconButton(
               onPressed: (){
                 mainController.sidebarAnimationController.forward();
