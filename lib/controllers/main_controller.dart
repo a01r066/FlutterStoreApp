@@ -1,4 +1,5 @@
 import 'package:flutter/animation.dart';
+import 'package:flutter_store_app/models/brand.dart';
 import 'package:get/get.dart';
 
 class MainController extends GetxController {
@@ -23,4 +24,7 @@ class MainController extends GetxController {
     _isSidebarHidden.value = value;
   }
   late AnimationController sidebarAnimationController;
+
+  // Brands
+  final brandSelectedIndex = 0.obs;
 }

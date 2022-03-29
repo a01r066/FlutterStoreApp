@@ -3,10 +3,9 @@ import 'package:flutter_store_app/controllers/main_controller.dart';
 import 'package:flutter_store_app/controllers/theme_controller.dart';
 import 'package:flutter_store_app/helpers/kapp_icons.dart';
 import 'package:flutter_store_app/pages/cart/cart_page.dart';
-import 'package:flutter_store_app/pages/feeds/feeds_page.dart';
-import 'package:flutter_store_app/pages/feeds/product_detail_page.dart';
+import 'package:flutter_store_app/pages/products/feeds_page.dart';
+import 'package:flutter_store_app/pages/products/product_list_page.dart';
 import 'package:flutter_store_app/pages/home/home_page.dart';
-import 'package:flutter_store_app/pages/home/home_widget.dart';
 import 'package:flutter_store_app/pages/search/search_page.dart';
 import 'package:flutter_store_app/pages/settings/user_info_page.dart';
 import 'package:flutter_store_app/pages/shared/bottom_nav_bar_widget.dart';
@@ -80,8 +79,7 @@ class _AppWidgetState extends State<AppWidget> with TickerProviderStateMixin {
         // initialRoute: "/home",
         defaultTransition: Transition.rightToLeft,
         getPages: [
-          GetPage(name: "/product_detail", page: () => ProductDetailPage()),
-
+          GetPage(name: "/product_list", page: () => ProductListPage()),
         ],
         home: Stack(
           children: [

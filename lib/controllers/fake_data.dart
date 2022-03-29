@@ -1,3 +1,5 @@
+import 'package:flutter_store_app/models/brand.dart';
+
 import '../models/category.dart';
 import '../models/product.dart';
 
@@ -687,4 +689,18 @@ class FakeData {
             isPopular: item['isPopular'],
             quantity: int.parse(item['quantity'].toString()));
       }).toList();
+
+  List<Brand> get brands => [
+        {'id': 'Samsung', 'title': 'Samsung', 'imageUrl': 'assets/images/samsung.jpg'},
+        {'id': 'Huawei', 'title': 'Huawei', 'imageUrl': 'assets/images/Huawei.jpg'},
+        {'id': 'Apple', 'title': 'Apple', 'imageUrl': 'assets/images/apple.jpg'},
+        {'id': 'No brandId', 'title': 'No brandId', 'imageUrl': 'assets/images/no_photo.jpeg'},
+        {'id': 'H&M', 'title': 'H & M', 'imageUrl': 'assets/images/h&m.jpg'},
+        {'id': 'Nike', 'title': 'Nike', 'imageUrl': 'assets/images/nike.jpg'},
+        {'id': 'Addidas', 'title': 'Addidas', 'imageUrl': 'assets/images/addidas.jpg'},
+        {'id': 'Dell', 'title': 'Dell', 'imageUrl': 'assets/images/Dell.jpg'},
+      ]
+          .map((Map<String, dynamic> item) =>
+      Brand(id: item['id'], title: item['title'], imageUrl: item['imageUrl']))
+          .toList();
 }

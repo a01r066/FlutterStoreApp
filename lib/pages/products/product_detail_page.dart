@@ -1,13 +1,16 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_store_app/helpers/kapp_icons.dart';
-import 'package:flutter_store_app/pages/feeds/product_card_widget.dart';
+import 'package:flutter_store_app/helpers/kconstants.dart';
+import 'package:flutter_store_app/models/product.dart';
+import 'package:flutter_store_app/pages/products/product_card_widget.dart';
 import 'package:get/get.dart';
-
 import '../shared/shared_widget.dart';
 
 class ProductDetailPage extends StatefulWidget {
+  final Product product;
+
+  ProductDetailPage({Key? key,  required this.product }) : super(key: key);
+
   @override
   _ProductDetailPageState createState() => _ProductDetailPageState();
 }
@@ -44,7 +47,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                           Padding(
                             padding: const EdgeInsets.only(left: 32.0),
                             child: Text(
-                              "DETAIL",
+                              widget.product.title,
                               style: TextStyle(
                                 fontSize: 16.0,
                                 fontWeight: FontWeight.bold,
@@ -76,9 +79,11 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                             minHeight: 100.0,
                             maxHeight: 152.0,
                           ),
-                          child: Image.asset(
-                            'assets/images/CatFurniture.jpg',
-                            fit: BoxFit.cover,
+                          decoration: BoxDecoration(
+                            image: DecorationImage(
+                              image: NetworkImage(widget.product.imageUrl ?? KConstant.noPhotoNetwork),
+                              fit: BoxFit.contain
+                            )
                           ),
                         ),
                       ),
@@ -167,7 +172,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                 ),
                 Padding(
                   padding: const EdgeInsets.all(12.0),
-                  child: HeaderWidget(title: "Top rated products"),
+                  child: HeaderWidget(title: "Popular products"),
                 ),
                 Container(
                   height: 256.0,

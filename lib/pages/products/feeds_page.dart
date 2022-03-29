@@ -1,7 +1,9 @@
 import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_store_app/controllers/api_controller.dart';
 import 'package:flutter_store_app/helpers/kapp_icons.dart';
-import 'package:flutter_store_app/pages/feeds/feeds_widget.dart';
+import 'package:flutter_store_app/models/product.dart';
+import 'package:flutter_store_app/pages/products/feeds_widget.dart';
 import 'package:get/get.dart';
 
 class FeedsPage extends StatefulWidget {
@@ -10,10 +12,12 @@ class FeedsPage extends StatefulWidget {
 }
 
 class _FeedsPageState extends State<FeedsPage> {
-  List products = [];
+  final apiController = Get.find<ApiController>();
+  List<Product> products = [];
 
   @override
   Widget build(BuildContext context) {
+    products = apiController.getProducts();
     return Scaffold(
       body: SafeArea(
         child: Column(
@@ -65,18 +69,23 @@ class _FeedsPageState extends State<FeedsPage> {
               ),
             ),
             Expanded(
-              child: GridView.count(
-                childAspectRatio: 25 / 37,
-                crossAxisCount: 2,
-                children: List.generate(
-                  10,
-                  (index) {
-                    return GestureDetector(
-                      onTap: (){
-                        Get.toNamed("/product_detail");
-                      },
-                        child: FeedsCardWidget(context));
-                  },
+              child: Container(
+                padding: const EdgeInsets.all(12.0),
+                child: GridView.count(
+                  childAspectRatio: 25 / 37,
+                  crossAxisCount: 2,
+                  mainAxisSpacing: 12.0,
+                  crossAxisSpacing: 12.0,
+                  children: List.generate(
+                    products.length,
+                    (index) {
+                      return GestureDetector(
+                        onTap: (){
+                          Get.toNamed("/product_detail");
+                        },
+                          child: ProductItemWidget(product: products[index],));
+                    },
+                  ),
                 ),
               ),
             ),

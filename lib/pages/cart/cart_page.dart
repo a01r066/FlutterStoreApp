@@ -48,7 +48,7 @@ class _CartPageState extends State<CartPage> {
                   return Padding(
                     padding:
                         EdgeInsets.symmetric(horizontal: 12.0, vertical: 4.0),
-                    child: CartItemWidget(context),
+                    child: CartItemWidget(),
                   );
                 },
                 physics: ClampingScrollPhysics(),

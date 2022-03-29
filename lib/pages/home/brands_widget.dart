@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_store_app/controllers/api_controller.dart';
+import 'package:flutter_store_app/helpers/kconstants.dart';
+import 'package:flutter_store_app/models/brand.dart';
+import 'package:flutter_store_app/pages/brands/brands_page.dart';
+import 'package:get/get.dart';
 
 class BrandsWidget extends StatefulWidget {
   @override
@@ -6,7 +11,14 @@ class BrandsWidget extends StatefulWidget {
 }
 
 class _BrandsWidgetState extends State<BrandsWidget> {
-  List<int> items = [1, 2, 3, 4, 5];
+  final apiController = Get.find<ApiController>();
+  List<Brand> brands = [];
+
+  @override
+  void initState() {
+    super.initState();
+    brands = apiController.getBrands();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -20,12 +32,12 @@ class _BrandsWidgetState extends State<BrandsWidget> {
             padding: EdgeInsets.symmetric(horizontal: 12.0),
             child: GestureDetector(
               onTap: (){
-                print("Tapped: ${items[index]}");
+                Navigator.push(context, MaterialPageRoute(builder: (context) => BrandsPage(brand: brands[index])));
               },
-                child: BrandsItemWidget(context: context, item: items[index])),
+                child: BrandCardWidget(brand: brands[index])),
           );
         },
-        itemCount: items.length,
+        itemCount: brands.length,
         shrinkWrap: true,
         physics: ClampingScrollPhysics(),
       ),
@@ -33,19 +45,23 @@ class _BrandsWidgetState extends State<BrandsWidget> {
   }
 }
 
-Widget BrandsItemWidget({required BuildContext context, required int item}) {
-  return Container(
-    width: MediaQuery.of(context).size.width / 3,
-    decoration: BoxDecoration(
-      color: Theme.of(context).scaffoldBackgroundColor,
-      borderRadius: BorderRadius.circular(8.0),
-      image: DecorationImage(
-        image: AssetImage('assets/images/h&m.jpg'),
-        fit: BoxFit.fill,
+class BrandCardWidget extends StatelessWidget {
+  final Brand brand;
+  const BrandCardWidget({Key? key, required this.brand}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: MediaQuery.of(context).size.width / 3,
+      decoration: BoxDecoration(
+        color: Theme.of(context).scaffoldBackgroundColor,
+        borderRadius: BorderRadius.circular(8.0),
+        image: DecorationImage(
+          image: AssetImage(brand.imageUrl ?? KConstant.noPhoto),
+          fit: BoxFit.fill,
+        ),
       ),
-    ),
-    child: Text(
-      "Brand Item",
-    ),
-  );
+      child: Text(""),
+    );
+  }
 }

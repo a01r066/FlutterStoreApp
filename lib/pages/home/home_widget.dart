@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_store_app/helpers/kapp_icons.dart';
 import 'package:flutter_store_app/pages/home/brands_widget.dart';
 import 'package:flutter_store_app/pages/home/categories_widget.dart';
-import 'package:flutter_store_app/pages/cart/products_widget.dart';
+import 'package:flutter_store_app/pages/cart/popular_products_widget.dart';
 import 'package:flutter_store_app/pages/shared/shared_widget.dart';
 import '../carousels/banner_carousel.dart';
 
@@ -42,7 +42,7 @@ class _HomeWidgetState extends State<HomeWidget> {
           ),
           Padding(
             padding: const EdgeInsets.only(bottom: 40.0),
-            child: ProductsWidget(),
+            child: PopularProductsWidget(),
           ),
         ],
       ),

@@ -6,12 +6,12 @@ import '../../controllers/api_controller.dart';
 import '../../models/product.dart';
 import 'package:get/get.dart';
 
-class ProductsWidget extends StatefulWidget {
+class PopularProductsWidget extends StatefulWidget {
   @override
-  _ProductsWidgetState createState() => _ProductsWidgetState();
+  _PopularProductsWidgetState createState() => _PopularProductsWidgetState();
 }
 
-class _ProductsWidgetState extends State<ProductsWidget> {
+class _PopularProductsWidgetState extends State<PopularProductsWidget> {
   final apiController = Get.find<ApiController>();
   List<Product> products = [];
 
@@ -67,7 +67,7 @@ class ProductItemWidget extends StatelessWidget {
                     image: DecorationImage(
                       image: NetworkImage(product.imageUrl ??
                           'https://via.placeholder.com/150'),
-                      fit: BoxFit.cover,
+                      fit: BoxFit.contain,
                     ),
                     borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(6.0),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_store_app/controllers/api_controller.dart';
 import 'package:flutter_store_app/helpers/kconstants.dart';
 import 'package:flutter_store_app/models/category.dart';
+import 'package:flutter_store_app/pages/products/product_list_page.dart';
 import 'package:get/get.dart';
 
 class CategoriesWidget extends StatefulWidget {
@@ -29,7 +30,9 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
         itemBuilder: (context, index) {
           return Padding(
             padding: EdgeInsets.symmetric(horizontal: 12.0),
-            child: CategoryCardWidget(category: categories[index],),
+            child: CategoryCardWidget(
+              category: categories[index],
+            ),
           );
         },
         itemCount: categories.length,
@@ -38,15 +41,13 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
       ),
     );
   }
-
-  Future<void> fetchCategories() async {
-    categories = await apiController.getCategories();
-  }
 }
 
 class CategoryCardWidget extends StatelessWidget {
   final Category category;
-  const CategoryCardWidget({Key? key, required this.category}) : super(key: key);
+
+  const CategoryCardWidget({Key? key, required this.category})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -61,31 +62,46 @@ class CategoryCardWidget extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           ClipRect(
-            child: Container(
-              constraints: BoxConstraints(
-                minHeight: 64.0,
-                maxHeight: 106.0,
-              ),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(8.0),
-                  topRight: Radius.circular(8.0),
+            child: GestureDetector(
+              onTap: () {
+                // Get.toNamed("/product_list/${category.id}");
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ProductListPage(
+                      category: category,
+                    ),
+                  ),
+                );
+              },
+              child: Container(
+                constraints: BoxConstraints(
+                  minHeight: 64.0,
+                  maxHeight: 106.0,
                 ),
-                image: DecorationImage(
-                  image: AssetImage(category.imageUrl ?? KConstant.noPhoto),
-                  fit: BoxFit.fill,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(8.0),
+                    topRight: Radius.circular(8.0),
+                  ),
+                  image: DecorationImage(
+                    image: AssetImage(category.imageUrl ?? KConstant.noPhoto),
+                    fit: BoxFit.fill,
+                  ),
                 ),
+                width: double.infinity,
               ),
-              width: double.infinity,
             ),
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 8.0),
-            child: Text(category.title, style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.w500),),
+            child: Text(
+              category.title,
+              style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.w500),
+            ),
           ),
         ],
       ),
     );
   }
 }
-

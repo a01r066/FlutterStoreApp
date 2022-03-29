@@ -1,3 +1,4 @@
+import 'package:flutter_store_app/models/brand.dart';
 import 'package:flutter_store_app/models/category.dart';
 import 'package:flutter_store_app/models/product.dart';
 import 'package:get/get.dart';
@@ -18,12 +19,12 @@ class ApiController extends GetxController {
         .toList();
   }
 
-  Product findProductById(String productId) {
+  Product getProductById(String productId) {
     return [...FakeData.shared.products]
         .firstWhere((element) => element.id == productId);
   }
 
-  List<Product> findProductByCategoryId(String categoryId) {
+  List<Product> getProductsByCategoryId(String categoryId) {
     List<Product> products = [...FakeData.shared.products]
         .where((element) => element.categoryId
         .toLowerCase()
@@ -32,7 +33,7 @@ class ApiController extends GetxController {
     return products;
   }
 
-  List<Product> findProductByBrandId(String brandId) {
+  List<Product> getProductByBrandId(String brandId) {
     List<Product> products = [...FakeData.shared.products]
         .where((element) => element.brandId!
         .toLowerCase()
@@ -48,5 +49,9 @@ class ApiController extends GetxController {
         .contains(searchText.toLowerCase()))
         .toList();
     return products;
+  }
+
+  List<Brand> getBrands(){
+    return [...FakeData.shared.brands];
   }
 }
