@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_store_app/controllers/api_controller.dart';
+import 'package:flutter_store_app/controllers/main_controller.dart';
 import 'package:flutter_store_app/helpers/kapp_icons.dart';
 import 'package:flutter_store_app/helpers/kconstants.dart';
 import 'package:flutter_store_app/helpers/number_formatter.dart';
+import 'package:flutter_store_app/models/cart_item.dart';
 import 'package:flutter_store_app/models/product.dart';
 import 'package:flutter_store_app/pages/products/product_card_widget.dart';
 import 'package:get/get.dart';
@@ -19,6 +22,7 @@ class ProductDetailPage extends StatefulWidget {
 
 class _ProductDetailPageState extends State<ProductDetailPage> {
   final apiController = Get.find<ApiController>();
+  final mainController = Get.find<MainController>();
   List<Product> products = [];
 
   @override
@@ -232,7 +236,14 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                   splashColor: Colors.transparent,
                   color: Colors.redAccent,
                   onPressed: () {
-                    print("Tapped");
+                    final cartItem = CartItem(itemId: widget.product.id, title: widget.product.title, price: widget.product.price, imageUrl: widget.product.imageUrl, quantity: 1);
+                    mainController.addToCart(item: cartItem, callback: (isSuccess){
+                      if(isSuccess){
+                        EasyLoading.showSuccess("${widget.product.title} added to cart!");
+                      } else {
+                        EasyLoading.showInfo("${widget.product.title} existed in your cart!");
+                      }
+                    });
                   },
                   child: Text(
                     "ADD TO CART",

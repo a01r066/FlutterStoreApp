@@ -38,81 +38,69 @@ class _CartPageState extends State<CartPage> {
         ? Scaffold(
             body: emptyPage,
           )
-        : Scaffold(
-            appBar: AppBar(
-              title: Text("Cart(${mainController.cartItems.length})"),
-              actions: [
-                // IconButton(
-                //   onPressed: () {
-                //     print("Delete");
-                //   },
-                //   icon: Icon(KAppIcons.delete),
-                // ),
-              ],
-            ),
-            body: Container(
-              margin: EdgeInsets.only(bottom: 68.0),
-              child: ListView.builder(
-                itemBuilder: (context, index) {
-                  final cartItem = cartItems[index];
-                  return Padding(
-                    padding:
-                        EdgeInsets.symmetric(horizontal: 12.0, vertical: 6.0),
-                    child: CartItemWidget(
-                      cartItem: cartItem,
-                      deleteCallback: () {
-                        setState(() {
-                          mainController.removeCartItem(cartItem: cartItem);
+        : Obx(() =>
+          Scaffold(
+              appBar: AppBar(
+                title: Text("Cart(${mainController.cartItems.length})"),
+              ),
+              body: Container(
+                margin: EdgeInsets.only(bottom: 68.0),
+                child: ListView.builder(
+                  itemBuilder: (context, index) {
+                    final cartItem = cartItems[index];
+                    return Padding(
+                      padding:
+                      EdgeInsets.symmetric(horizontal: 12.0, vertical: 6.0),
+                      child: CartItemWidget(
+                        cartItem: cartItem,
+                        deleteCallback: () {
+                          setState(() {
+                            mainController.removeCartItem(cartItem: cartItem);
+                          });
                           mainController.getTotalAmount();
-                        });
-                      },
-                      minusCallback: () {
-                        setState(() {
+                        },
+                        minusCallback: () {
                           mainController.removeCartItemQty(item: cartItem);
                           mainController.getTotalAmount();
-                        });
-                      },
-                      plusCallback: () {
-                        setState(() {
+                        },
+                        plusCallback: () {
                           mainController.addCartItemQty(item: cartItem);
                           mainController.getTotalAmount();
-                        });
-                      },
-                    ),
-                  );
-                },
-                physics: ClampingScrollPhysics(),
-                shrinkWrap: true,
-                itemCount: cartItems.length,
+                        },
+                      ),
+                    );
+                  },
+                  physics: ClampingScrollPhysics(),
+                  shrinkWrap: true,
+                  itemCount: cartItems.length,
+                ),
               ),
-            ),
-            bottomSheet: Padding(
-              padding: EdgeInsets.fromLTRB(16.0, 8.0, 16.0, 8.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Expanded(
-                    child: ElevatedButton(
-                      onPressed: () {},
-                      child: Text("Checkout"),
-                      style: ElevatedButton.styleFrom(
-                        primary: Theme.of(context).colorScheme.primary,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20.0),
+              bottomSheet: Padding(
+                padding: EdgeInsets.fromLTRB(16.0, 8.0, 16.0, 8.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Expanded(
+                      child: ElevatedButton(
+                        onPressed: () {},
+                        child: Text("Checkout"),
+                        style: ElevatedButton.styleFrom(
+                          primary: Theme.of(context).colorScheme.primary,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20.0),
+                          ),
+                          // minimumSize: Size(128.0, 40.0)
                         ),
-                        // minimumSize: Size(128.0, 40.0)
                       ),
                     ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.fromLTRB(12.0, 8.0, 12.0, 24.0),
-                    child: Row(
-                      children: [
-                        Text("TOTAL:", style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),),
-                        SizedBox(
-                          width: 12.0,
-                        ),
-                        Obx(() =>
+                    Padding(
+                      padding: EdgeInsets.fromLTRB(12.0, 8.0, 12.0, 24.0),
+                      child: Row(
+                        children: [
+                          Text("TOTAL:", style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),),
+                          SizedBox(
+                            width: 12.0,
+                          ),
                           Text(
                             "\$${mainController.totalAmount.toStringAsFixed(1)}",
                             style: TextStyle(
@@ -120,13 +108,13 @@ class _CartPageState extends State<CartPage> {
                                 fontWeight: FontWeight.bold,
                                 color: Theme.of(context).accentColor),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
-          );
+        );
   }
 }
