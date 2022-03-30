@@ -1,7 +1,7 @@
 import 'package:flutter/animation.dart';
-import 'package:flutter_store_app/models/brand.dart';
 import 'package:flutter_store_app/models/cart_item.dart';
 import 'package:get/get.dart';
+import '../helpers/number_formatter.dart';
 
 class MainController extends GetxController {
   // Bottom navigation bar
@@ -70,5 +70,15 @@ class MainController extends GetxController {
       final newItem = CartItem(itemId: item.itemId, title: item.title, price: newPrice, imageUrl: item.imageUrl, quantity: newQty);
       _cartItems[itemIndex] = newItem;
     }
+  }
+
+  final _totalAmount = 0.0.obs;
+  double get totalAmount => _totalAmount.value;
+  String getTotalAmount() {
+    _totalAmount.value = 0;
+    for (CartItem cartItem in [..._cartItems]) {
+      _totalAmount.value += cartItem.price;
+    }
+    return formatter.format(_totalAmount.value);
   }
 }

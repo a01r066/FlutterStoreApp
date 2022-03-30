@@ -1,9 +1,7 @@
 import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_store_app/helpers/kconstants.dart';
 import 'package:flutter_store_app/models/product.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-
 import '../../helpers/number_formatter.dart';
 
 class ProductItemWidget extends StatelessWidget {
@@ -31,7 +29,7 @@ class ProductItemWidget extends StatelessWidget {
                             BoxConstraints(minHeight: 96.0, maxHeight: 155.0),
                         child:
                             Image.network(
-                          product.imageUrl ?? KConstant.noPhotoNetwork,
+                          product.imageUrl,
                           fit: BoxFit.contain,
                         ),
                         width: double.infinity,

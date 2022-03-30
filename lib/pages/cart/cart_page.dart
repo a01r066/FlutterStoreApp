@@ -29,6 +29,7 @@ class _CartPageState extends State<CartPage> {
   void initState() {
     super.initState();
     cartItems = mainController.cartItems;
+    mainController.getTotalAmount();
   }
 
   @override
@@ -62,16 +63,19 @@ class _CartPageState extends State<CartPage> {
                       deleteCallback: () {
                         setState(() {
                           mainController.removeCartItem(cartItem: cartItem);
+                          mainController.getTotalAmount();
                         });
                       },
                       minusCallback: () {
                         setState(() {
                           mainController.removeCartItemQty(item: cartItem);
+                          mainController.getTotalAmount();
                         });
                       },
                       plusCallback: () {
                         setState(() {
                           mainController.addCartItemQty(item: cartItem);
+                          mainController.getTotalAmount();
                         });
                       },
                     ),
@@ -101,19 +105,21 @@ class _CartPageState extends State<CartPage> {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 16.0),
+                    padding: EdgeInsets.fromLTRB(12.0, 8.0, 12.0, 24.0),
                     child: Row(
                       children: [
-                        Text("Total:"),
+                        Text("TOTAL:", style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),),
                         SizedBox(
                           width: 12.0,
                         ),
-                        Text(
-                          "\$199.99",
-                          style: TextStyle(
-                              fontSize: 20.0,
-                              fontWeight: FontWeight.bold,
-                              color: Theme.of(context).accentColor),
+                        Obx(() =>
+                          Text(
+                            "\$${mainController.totalAmount.toStringAsFixed(1)}",
+                            style: TextStyle(
+                                fontSize: 20.0,
+                                fontWeight: FontWeight.bold,
+                                color: Theme.of(context).accentColor),
+                          ),
                         ),
                       ],
                     ),

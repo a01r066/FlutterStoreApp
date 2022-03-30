@@ -85,13 +85,23 @@ class CartItemWidget extends StatelessWidget {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
-                          "Total: \$${formatter.format(product.price)}",
-                          // style: TextStyle(color: Theme.of(context).colorScheme.secondary),
-                        ),
-                        Text(
-                          "SubTotal: \$${formatter.format(product.price / 10)}",
-                          // style: TextStyle(color: Theme.of(context).colorScheme.secondary),
+                        Row(
+                          children: [
+                            Text(
+                              "Price: \$${formatter.format(product.price)}",
+                              style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
+                            ),
+                            Text(
+                              "\$${formatter.format(product.price / 10)}",
+                              style: TextStyle(decoration: TextDecoration.lineThrough),
+                            ),
+                            Text(
+                              "10% off",
+                              style: TextStyle(),
+                            ),
+                            SizedBox(width: 12.0,),
+                          ],
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         ),
                       ],
                     ),
