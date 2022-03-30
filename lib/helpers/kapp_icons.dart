@@ -22,9 +22,11 @@ class KAppIcons {
   static const cartHeart = MdiIcons.cartHeart;
 
   // Cart icons
-  static const delete = MdiIcons.delete;
+  static const delete = MdiIcons.deleteForeverOutline;
   static const close = MdiIcons.close;
-  static const cartEmpty = MdiIcons.cartPlus;
+  static const cartPlus = MdiIcons.cartPlus;
+  static const minusCircle = MdiIcons.minusCircleOutline;
+  static const plusCircle = MdiIcons.plusCircleOutline;
 
   // Home icons
   static const menu = MdiIcons.menu;

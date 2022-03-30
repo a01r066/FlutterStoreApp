@@ -23,10 +23,10 @@ class _$ProductTearOff {
       required String title,
       required String categoryId,
       String? description,
-      double? price,
+      required double price,
       int? quantity,
       String? brandId,
-      String? imageUrl,
+      required String imageUrl,
       bool? isFavourite,
       bool? isPopular}) {
     return _Product(
@@ -53,10 +53,10 @@ mixin _$Product {
   String get title => throw _privateConstructorUsedError;
   String get categoryId => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
-  double? get price => throw _privateConstructorUsedError;
+  double get price => throw _privateConstructorUsedError;
   int? get quantity => throw _privateConstructorUsedError;
   String? get brandId => throw _privateConstructorUsedError;
-  String? get imageUrl => throw _privateConstructorUsedError;
+  String get imageUrl => throw _privateConstructorUsedError;
   bool? get isFavourite => throw _privateConstructorUsedError;
   bool? get isPopular => throw _privateConstructorUsedError;
 
@@ -73,10 +73,10 @@ abstract class $ProductCopyWith<$Res> {
       String title,
       String categoryId,
       String? description,
-      double? price,
+      double price,
       int? quantity,
       String? brandId,
-      String? imageUrl,
+      String imageUrl,
       bool? isFavourite,
       bool? isPopular});
 }
@@ -122,7 +122,7 @@ class _$ProductCopyWithImpl<$Res> implements $ProductCopyWith<$Res> {
       price: price == freezed
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as double,
       quantity: quantity == freezed
           ? _value.quantity
           : quantity // ignore: cast_nullable_to_non_nullable
@@ -134,7 +134,7 @@ class _$ProductCopyWithImpl<$Res> implements $ProductCopyWith<$Res> {
       imageUrl: imageUrl == freezed
           ? _value.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       isFavourite: isFavourite == freezed
           ? _value.isFavourite
           : isFavourite // ignore: cast_nullable_to_non_nullable
@@ -157,10 +157,10 @@ abstract class _$ProductCopyWith<$Res> implements $ProductCopyWith<$Res> {
       String title,
       String categoryId,
       String? description,
-      double? price,
+      double price,
       int? quantity,
       String? brandId,
-      String? imageUrl,
+      String imageUrl,
       bool? isFavourite,
       bool? isPopular});
 }
@@ -207,7 +207,7 @@ class __$ProductCopyWithImpl<$Res> extends _$ProductCopyWithImpl<$Res>
       price: price == freezed
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as double,
       quantity: quantity == freezed
           ? _value.quantity
           : quantity // ignore: cast_nullable_to_non_nullable
@@ -219,7 +219,7 @@ class __$ProductCopyWithImpl<$Res> extends _$ProductCopyWithImpl<$Res>
       imageUrl: imageUrl == freezed
           ? _value.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       isFavourite: isFavourite == freezed
           ? _value.isFavourite
           : isFavourite // ignore: cast_nullable_to_non_nullable
@@ -240,10 +240,10 @@ class _$_Product implements _Product {
       required this.title,
       required this.categoryId,
       this.description,
-      this.price,
+      required this.price,
       this.quantity,
       this.brandId,
-      this.imageUrl,
+      required this.imageUrl,
       this.isFavourite,
       this.isPopular});
 
@@ -256,13 +256,13 @@ class _$_Product implements _Product {
   @override
   final String? description;
   @override
-  final double? price;
+  final double price;
   @override
   final int? quantity;
   @override
   final String? brandId;
   @override
-  final String? imageUrl;
+  final String imageUrl;
   @override
   final bool? isFavourite;
   @override
@@ -319,10 +319,10 @@ abstract class _Product implements Product {
       required String title,
       required String categoryId,
       String? description,
-      double? price,
+      required double price,
       int? quantity,
       String? brandId,
-      String? imageUrl,
+      required String imageUrl,
       bool? isFavourite,
       bool? isPopular}) = _$_Product;
 
@@ -335,13 +335,13 @@ abstract class _Product implements Product {
   @override
   String? get description;
   @override
-  double? get price;
+  double get price;
   @override
   int? get quantity;
   @override
   String? get brandId;
   @override
-  String? get imageUrl;
+  String get imageUrl;
   @override
   bool? get isFavourite;
   @override

@@ -181,7 +181,7 @@ class ProductRowWidget extends StatelessWidget {
             decoration: BoxDecoration(
                 image: DecorationImage(
                     image: NetworkImage(
-                        product.imageUrl ?? KConstant.noPhotoNetwork),
+                        product.imageUrl),
                     fit: BoxFit.contain)),
           ),
           SizedBox(

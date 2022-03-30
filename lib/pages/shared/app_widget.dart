@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_store_app/controllers/main_controller.dart';
 import 'package:flutter_store_app/controllers/theme_controller.dart';
 import 'package:flutter_store_app/helpers/kapp_icons.dart';
@@ -77,6 +78,7 @@ class _AppWidgetState extends State<AppWidget> with TickerProviderStateMixin {
         debugShowCheckedModeBanner: false,
         theme: Styles.themeData(themeController.isDarkMode, context),
         // initialRoute: "/home",
+        builder: EasyLoading.init(),
         defaultTransition: Transition.rightToLeft,
         getPages: [
           GetPage(name: "/product_list", page: () => ProductListPage()),

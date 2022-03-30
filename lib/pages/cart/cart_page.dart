@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_store_app/pages/cart/cart_item_widget.dart';
 import 'package:flutter_store_app/pages/shared/empty_page.dart';
-import 'package:flutter_store_app/pages/cart/cart_widget.dart';
+import 'package:get/get.dart';
+import '../../controllers/main_controller.dart';
 import '../../helpers/kapp_icons.dart';
+import '../../models/cart_item.dart';
 
 class CartPage extends StatefulWidget {
   @override
@@ -9,11 +12,13 @@ class CartPage extends StatefulWidget {
 }
 
 class _CartPageState extends State<CartPage> {
-  List items = [1, 2, 3, 4, 5, 6];
+  final mainController = Get.find<MainController>();
+  List<CartItem> cartItems = [];
+
   final emptyPage = EmptyPage(
     title: "Your cart is empty!",
     description: "Look like you haven't add any items in your cart yet!",
-    iconData: KAppIcons.cartEmpty,
+    iconData: KAppIcons.cartPlus,
     buttonName: "Show Now",
     callback: () {
       print("Button tapped!");
@@ -21,39 +26,60 @@ class _CartPageState extends State<CartPage> {
   );
 
   @override
+  void initState() {
+    super.initState();
+    cartItems = mainController.cartItems;
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return items.isEmpty
+    return cartItems.isEmpty
         ? Scaffold(
             body: emptyPage,
           )
         : Scaffold(
             appBar: AppBar(
-              title: Text("Cart(1)"),
+              title: Text("Cart(${mainController.cartItems.length})"),
               actions: [
-                IconButton(
-                  onPressed: () {
-                    print("Delete");
-                  },
-                  icon: Icon(KAppIcons.delete),
-                ),
-                Icon(
-                  null,
-                ),
+                // IconButton(
+                //   onPressed: () {
+                //     print("Delete");
+                //   },
+                //   icon: Icon(KAppIcons.delete),
+                // ),
               ],
             ),
             body: Container(
               margin: EdgeInsets.only(bottom: 68.0),
               child: ListView.builder(
                 itemBuilder: (context, index) {
+                  final cartItem = cartItems[index];
                   return Padding(
                     padding:
-                        EdgeInsets.symmetric(horizontal: 12.0, vertical: 4.0),
-                    child: CartItemWidget(),
+                        EdgeInsets.symmetric(horizontal: 12.0, vertical: 6.0),
+                    child: CartItemWidget(
+                      cartItem: cartItem,
+                      deleteCallback: () {
+                        setState(() {
+                          mainController.removeCartItem(cartItem: cartItem);
+                        });
+                      },
+                      minusCallback: () {
+                        setState(() {
+                          mainController.removeCartItemQty(item: cartItem);
+                        });
+                      },
+                      plusCallback: () {
+                        setState(() {
+                          mainController.addCartItemQty(item: cartItem);
+                        });
+                      },
+                    ),
                   );
                 },
                 physics: ClampingScrollPhysics(),
                 shrinkWrap: true,
-                itemCount: items.length,
+                itemCount: cartItems.length,
               ),
             ),
             bottomSheet: Padding(

@@ -8,10 +8,10 @@ class Product with _$Product {
     required String title,
     required String categoryId,
     String? description,
-    double? price,
+    required double price,
     int? quantity,
     String? brandId,
-    String? imageUrl,
+    required String imageUrl,
     bool? isFavourite,
     bool? isPopular
   }) = _Product;

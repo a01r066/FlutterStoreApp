@@ -66,4 +66,7 @@ class ApiController extends GetxController {
   List<KBanner> getBanners() {
     return [...FakeData.shared.banners];
   }
+
+  // Cart
+
 }

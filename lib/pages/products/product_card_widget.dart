@@ -42,7 +42,7 @@ class ProductCardWidget extends StatelessWidget {
                       image:
                           // AssetImage('assets/images/CatFurniture.jpg'),
                           NetworkImage(
-                              product.imageUrl ?? KConstant.noPhotoNetwork),
+                              product.imageUrl),
                       fit: BoxFit.contain,
                     ),
                   ),

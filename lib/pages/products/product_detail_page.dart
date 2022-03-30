@@ -64,21 +64,25 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                               overflow: TextOverflow.ellipsis,
                             ),
                           ),
-                          Row(
-                            children: [
-                              MatIconButton(
-                                iconData: KAppIcons.heartEmpty,
-                                callback: () {
-                                  print("heart");
-                                },
-                              ),
-                              MatIconButton(
-                                iconData: KAppIcons.cartFill,
-                                callback: () {
-                                  print("Cartfill");
-                                },
-                              ),
-                            ],
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                            child: Row(
+                              children: [
+                                MatIconButton(
+                                  iconData: KAppIcons.heartEmpty,
+                                  callback: () {
+                                    print("heart");
+                                  },
+                                ),
+                                SizedBox(width: 12.0,),
+                                MatIconButton(
+                                  iconData: KAppIcons.cartFill,
+                                  callback: () {
+                                    print("Cartfill");
+                                  },
+                                ),
+                              ],
+                            ),
                           ),
                         ],
                       ),
@@ -90,32 +94,36 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                           ),
                           decoration: BoxDecoration(
                             image: DecorationImage(
-                              image: NetworkImage(widget.product.imageUrl ?? KConstant.noPhotoNetwork),
+                              image: NetworkImage(widget.product.imageUrl),
                               fit: BoxFit.contain
                             )
                           ),
                         ),
                       ),
-                      Row(
-                        children: [
-                          Spacer(),
-                          Row(
-                            children: [
-                              MatIconButton(
-                                iconData: KAppIcons.save,
-                                callback: () {
-                                  print("Save");
-                                },
-                              ),
-                              MatIconButton(
-                                iconData: KAppIcons.share,
-                                callback: () {
-                                  print("Share");
-                                },
-                              ),
-                            ],
-                          ),
-                        ],
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                        child: Row(
+                          children: [
+                            Spacer(),
+                            Row(
+                              children: [
+                                MatIconButton(
+                                  iconData: KAppIcons.save,
+                                  callback: () {
+                                    print("Save");
+                                  },
+                                ),
+                                SizedBox(width: 12.0,),
+                                MatIconButton(
+                                  iconData: KAppIcons.share,
+                                  callback: () {
+                                    print("Share");
+                                  },
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
                       ),
                     ],
                   ),

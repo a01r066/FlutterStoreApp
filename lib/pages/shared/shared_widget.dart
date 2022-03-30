@@ -39,13 +39,14 @@ class MatIconButton extends StatelessWidget {
   const MatIconButton({
     Key? key,
     required this.iconData,
-    Color? gColor,
+    this.iconColor,
+    this.bgColor,
     required this.callback,
-    this.bColor,
   }) : super(key: key);
 
   final IconData iconData;
-  final Color? bColor;
+  final Color? iconColor;
+  final Color? bgColor;
   final Function() callback;
 
   @override
@@ -59,10 +60,12 @@ class MatIconButton extends StatelessWidget {
         ),
         padding: EdgeInsets.all(0),
         splashColor: Colors.transparent,
-        color: bColor,
+        color: bgColor,
         onPressed: callback,
         child: Icon(
           iconData,
+          size: 28.0,
+          color: iconColor,
         ),
       ),
     );

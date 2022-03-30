@@ -1,8 +1,12 @@
 import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:flutter_store_app/controllers/main_controller.dart';
 import 'package:flutter_store_app/helpers/kapp_icons.dart';
 import 'package:flutter_store_app/helpers/kconstants.dart';
+import 'package:flutter_store_app/models/cart_item.dart';
 import 'package:flutter_store_app/pages/products/product_detail_page.dart';
+import 'package:flutter_store_app/pages/shared/shared_widget.dart';
 import '../../controllers/api_controller.dart';
 import '../../helpers/number_formatter.dart';
 import '../../models/product.dart';
@@ -15,6 +19,7 @@ class PopularProductsWidget extends StatefulWidget {
 
 class _PopularProductsWidgetState extends State<PopularProductsWidget> {
   final apiController = Get.find<ApiController>();
+  final mainController = Get.find<MainController>();
   List<Product> products = [];
 
   @override
@@ -38,6 +43,27 @@ class _PopularProductsWidgetState extends State<PopularProductsWidget> {
               },
               child: ProductItemWidget(
                 product: products[index],
+                callback: () {
+                  // print("Add to cart");
+                  final product = products[index];
+                  final cartItem = CartItem(
+                      itemId: product.id,
+                      title: product.title,
+                      price: product.price,
+                      imageUrl: product.imageUrl,
+                      quantity: 1);
+                  mainController.addToCart(
+                    item: cartItem,
+                    callback: (isSuccess) {
+                      if(isSuccess){
+                        EasyLoading.showSuccess(
+                            "${product.title} added to cart!");
+                      } else {
+                        EasyLoading.showInfo('${product.title} existed in your cart!');
+                      }
+                    },
+                  );
+                },
               ),
             ),
           );
@@ -52,8 +78,11 @@ class _PopularProductsWidgetState extends State<PopularProductsWidget> {
 
 class ProductItemWidget extends StatelessWidget {
   final Product product;
+  final Function() callback;
 
-  const ProductItemWidget({Key? key, required this.product}) : super(key: key);
+  const ProductItemWidget(
+      {Key? key, required this.product, required this.callback})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -76,8 +105,7 @@ class ProductItemWidget extends StatelessWidget {
                   ),
                   decoration: BoxDecoration(
                     image: DecorationImage(
-                      image: NetworkImage(product.imageUrl ??
-                          'https://via.placeholder.com/150'),
+                      image: NetworkImage(product.imageUrl),
                       fit: BoxFit.contain,
                     ),
                     borderRadius: BorderRadius.only(
@@ -132,10 +160,12 @@ class ProductItemWidget extends StatelessWidget {
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                     )),
-                    IconButton(
-                      onPressed: () {},
-                      icon: Icon(KAppIcons.cart),
-                    ),
+                    // IconButton(
+                    //   onPressed: callback,
+                    //   icon: Icon(KAppIcons.cartPlus),
+                    // ),
+                    MatIconButton(
+                        iconData: KAppIcons.cartPlus, callback: callback),
                   ],
                 )
               ],
