@@ -4,6 +4,7 @@ import 'package:flutter_store_app/helpers/kapp_icons.dart';
 import 'package:flutter_store_app/helpers/kconstants.dart';
 import 'package:flutter_store_app/pages/products/product_detail_page.dart';
 import '../../controllers/api_controller.dart';
+import '../../helpers/number_formatter.dart';
 import '../../models/product.dart';
 import 'package:get/get.dart';
 
@@ -28,8 +29,12 @@ class _PopularProductsWidgetState extends State<PopularProductsWidget> {
           return Container(
             margin: const EdgeInsets.symmetric(horizontal: 12.0),
             child: GestureDetector(
-              onTap: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context) => ProductDetailPage(product: products[index])));
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) =>
+                            ProductDetailPage(product: products[index])));
               },
               child: ProductItemWidget(
                 product: products[index],
@@ -88,10 +93,15 @@ class ProductItemWidget extends StatelessWidget {
                 child: Badge(
                   toAnimate: false,
                   shape: BadgeShape.square,
-                  badgeColor: Colors.deepPurple,
+                  badgeColor: Colors.redAccent,
                   borderRadius: BorderRadius.circular(8),
-                  badgeContent:
-                      Text('BADGE', style: TextStyle(color: Colors.white)),
+                  badgeContent: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                    child: Text(
+                      '\$ ${formatter.format(product.price)}',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ),
                 ),
               ),
             ],
@@ -107,7 +117,10 @@ class ProductItemWidget extends StatelessWidget {
                   product.title,
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
-                  style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.w500,),
+                  style: TextStyle(
+                    fontSize: 16.0,
+                    fontWeight: FontWeight.w500,
+                  ),
                 ),
                 Divider(),
                 Row(

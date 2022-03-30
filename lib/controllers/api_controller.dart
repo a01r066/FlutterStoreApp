@@ -27,38 +27,43 @@ class ApiController extends GetxController {
 
   List<Product> getProductsByCategoryId(String categoryId) {
     List<Product> products = [...FakeData.shared.products]
-        .where((element) => element.categoryId
-        .toLowerCase()
-        .contains(categoryId.toLowerCase()))
+        .where((element) =>
+            element.categoryId.toLowerCase().contains(categoryId.toLowerCase()))
         .toList();
     return products;
   }
 
   List<Product> getProductByBrandId(String brandId) {
     List<Product> products = [...FakeData.shared.products]
-        .where((element) => element.brandId!
-        .toLowerCase()
-        .contains(brandId.toLowerCase()))
+        .where((element) =>
+            element.brandId!.toLowerCase().contains(brandId.toLowerCase()))
         .toList();
+    return products;
+  }
+
+  List<Product> getBrandProducts() {
+    List<Product> products = [...FakeData.shared.products]
+        .where((element) => (element.brandId != 'No brandId'))
+        .toList();
+    print("brand products: ${products.length}");
     return products;
   }
 
   List<Product> searchQuery(String searchText) {
     List<Product> products = [...FakeData.shared.products]
-        .where((element) => element.title
-        .toLowerCase()
-        .contains(searchText.toLowerCase()))
+        .where((element) =>
+            element.title.toLowerCase().contains(searchText.toLowerCase()))
         .toList();
     return products;
   }
 
   // Brands
-  List<Brand> getBrands(){
+  List<Brand> getBrands() {
     return [...FakeData.shared.brands];
   }
 
   // Banners
-  List<KBanner> getBanners(){
+  List<KBanner> getBanners() {
     return [...FakeData.shared.banners];
   }
 }

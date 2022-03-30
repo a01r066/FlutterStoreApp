@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_store_app/controllers/api_controller.dart';
 import 'package:flutter_store_app/helpers/kapp_icons.dart';
 import 'package:flutter_store_app/helpers/kconstants.dart';
+import 'package:flutter_store_app/helpers/number_formatter.dart';
 import 'package:flutter_store_app/models/product.dart';
 import 'package:flutter_store_app/pages/products/product_card_widget.dart';
 import 'package:get/get.dart';
@@ -16,7 +18,14 @@ class ProductDetailPage extends StatefulWidget {
 }
 
 class _ProductDetailPageState extends State<ProductDetailPage> {
-  List<int> items = [1, 2, 3, 4, 5, 6, 7];
+  final apiController = Get.find<ApiController>();
+  List<Product> products = [];
+
+  @override
+  void initState() {
+    super.initState();
+    products = apiController.getProductsByCategoryId(widget.product.categoryId);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -118,25 +127,23 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                     children: [
                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: 12.0),
-                        child: HeaderWidget(title: "Title"),
+                        child: HeaderWidget(title: widget.product.title),
                       ),
-                      Text("US \$ 15"),
+                      Text("US \$ ${formatter.format(widget.product.price)}"),
                       Divider(),
-                      Text("Description..."),
+                      Text(widget.product.description ?? "",),
                       Divider(),
-                      ListView.builder(
-                        itemBuilder: (context, index) {
-                          return Padding(
-                            padding: const EdgeInsets.only(bottom: 12.0),
-                            child: ProductFeatureWidget(
-                                context: context,
-                                title: "Title",
-                                description: "Description"),
-                          );
-                        },
-                        itemCount: 5,
-                        shrinkWrap: true,
-                        physics: ClampingScrollPhysics(),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 12.0),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            ProductFeatureWidget(title: "Brand", description: widget.product.brandId ?? ""),
+                            ProductFeatureWidget(title: "Quantity", description: "${widget.product.quantity}"),
+                            ProductFeatureWidget(title: "Category", description: widget.product.categoryId),
+                            ProductFeatureWidget(title: "Popularity", description: "${widget.product.isPopular}"),
+                          ],
+                        ),
                       ),
                     ],
                   ),
@@ -172,7 +179,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                 ),
                 Padding(
                   padding: const EdgeInsets.all(12.0),
-                  child: HeaderWidget(title: "Popular products"),
+                  child: HeaderWidget(title: "Other products"),
                 ),
                 Container(
                   height: 256.0,
@@ -182,16 +189,21 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                     itemBuilder: (context, index) {
                       return Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                        child: ProductCardWidget(
-                          item: items[index],
-                          iconData: KAppIcons.viewMore,
-                          callback: () {
-                            print("Detail");
+                        child: GestureDetector(
+                          onTap: (){
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => ProductDetailPage(product: products[index])));
                           },
+                          child: ProductCardWidget(
+                            product: products[index],
+                            iconData: KAppIcons.viewMore,
+                            callback: () {
+                             print("more");
+                            },
+                          ),
                         ),
                       );
                     },
-                    itemCount: items.length,
+                    itemCount: products.length,
                     shrinkWrap: true,
                     physics: ClampingScrollPhysics(),
                   ),
@@ -253,28 +265,32 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
   }
 }
 
-Widget ProductFeatureWidget(
-    {required BuildContext context,
-    required String title,
-    required String description}) {
-  return Row(
-    children: [
-      Text(
-        title,
-        style: TextStyle(
-          fontSize: 16.0,
-          fontWeight: FontWeight.w500,
-        ),
-      ),
-      Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 12.0),
-        child: Text(
-          description,
+class ProductFeatureWidget extends StatelessWidget {
+  final String title;
+  final String description;
+  const ProductFeatureWidget({Key? key, required this.title, required this.description}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Text(
+          title,
           style: TextStyle(
-              fontSize: 12.0,
-              fontWeight: FontWeight.w500,),
+            fontSize: 20.0,
+            fontWeight: FontWeight.w500,
+          ),
         ),
-      ),
-    ],
-  );
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 12.0),
+          child: Text(
+            description,
+            style: TextStyle(
+              fontSize: 16.0,
+              fontWeight: FontWeight.w500,),
+          ),
+        ),
+      ],
+    );
+  }
 }

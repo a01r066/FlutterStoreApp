@@ -720,16 +720,37 @@ class FakeData {
           'imageUrl': 'assets/images/addidas.jpg'
         },
         {'id': 'Dell', 'title': 'Dell', 'imageUrl': 'assets/images/Dell.jpg'},
+        {
+          'id': 'all',
+          'title': 'All brands',
+          'imageUrl': 'assets/images/view_all.gif'
+        }
       ]
           .map((Map<String, dynamic> item) => Brand(
               id: item['id'], title: item['title'], imageUrl: item['imageUrl']))
           .toList();
 
   List<KBanner> get banners => [
-        {'id': 'carousel1', 'title': 'carousel1', 'imageUrl': 'assets/images/carousel1.png'},
-        {'id': 'carousel2', 'title': 'carousel2', 'imageUrl': 'assets/images/carousel2.jpeg'},
-        {'id': 'carousel3', 'title': 'carousel3', 'imageUrl': 'assets/images/carousel3.jpg'},
-        {'id': 'carousel4', 'title': 'carousel4', 'imageUrl': 'assets/images/carousel4.png'},
+        {
+          'id': 'carousel1',
+          'title': 'carousel1',
+          'imageUrl': 'assets/images/carousel1.png'
+        },
+        {
+          'id': 'carousel2',
+          'title': 'carousel2',
+          'imageUrl': 'assets/images/carousel2.jpeg'
+        },
+        {
+          'id': 'carousel3',
+          'title': 'carousel3',
+          'imageUrl': 'assets/images/carousel3.jpg'
+        },
+        {
+          'id': 'carousel4',
+          'title': 'carousel4',
+          'imageUrl': 'assets/images/carousel4.png'
+        },
       ]
           .map((Map<String, dynamic> item) => KBanner(
               id: item['id'], title: item['title'], imageUrl: item['imageUrl']))

@@ -4,6 +4,8 @@ import 'package:flutter_store_app/helpers/kconstants.dart';
 import 'package:flutter_store_app/models/product.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
+import '../../helpers/number_formatter.dart';
+
 class ProductItemWidget extends StatelessWidget {
   final Product product;
 
@@ -67,7 +69,7 @@ class ProductItemWidget extends StatelessWidget {
                 SizedBox(
                   height: 8.0,
                 ),
-                Text("\$${product.price}"),
+                Text("\$${formatter.format(product.price)}"),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [

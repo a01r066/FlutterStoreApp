@@ -1,15 +1,19 @@
 import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_store_app/helpers/kconstants.dart';
+import 'package:flutter_store_app/models/product.dart';
 import 'package:flutter_store_app/pages/shared/shared_widget.dart';
 
+import '../../helpers/number_formatter.dart';
+
 class ProductCardWidget extends StatelessWidget {
-  final int item;
+  final Product product;
   final IconData iconData;
   final Function() callback;
 
   ProductCardWidget(
       {Key? key,
-      required this.item,
+      required this.product,
       required this.iconData,
       required this.callback})
       : super(key: key);
@@ -34,10 +38,14 @@ class ProductCardWidget extends StatelessWidget {
                     maxHeight: 148.0,
                   ),
                   decoration: BoxDecoration(
-                      image: DecorationImage(
-                    image: AssetImage('assets/images/CatFurniture.jpg'),
-                    fit: BoxFit.fill,
-                  )),
+                    image: DecorationImage(
+                      image:
+                          // AssetImage('assets/images/CatFurniture.jpg'),
+                          NetworkImage(
+                              product.imageUrl ?? KConstant.noPhotoNetwork),
+                      fit: BoxFit.contain,
+                    ),
+                  ),
                 ),
               ),
               Positioned(
@@ -62,13 +70,15 @@ class ProductCardWidget extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "Apple watch",
+                  product.title,
                   style: TextStyle(fontSize: 12.0, fontWeight: FontWeight.w500),
                   overflow: TextOverflow.ellipsis,
                 ),
-                SizedBox(height: 4.0,),
+                SizedBox(
+                  height: 4.0,
+                ),
                 Text(
-                  "\$158.99",
+                  "\$${formatter.format(product.price)}",
                   style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.w500),
                 ),
                 Divider(),

@@ -25,7 +25,7 @@ class _ProductListPageState extends State<ProductListPage> {
     if (widget.category != null) {
       products = apiController.getProductsByCategoryId(widget.category!.id);
     } else {
-      products = apiController.getProducts();
+      products = apiController.getPopularProducts();
     }
   }
 
@@ -33,7 +33,7 @@ class _ProductListPageState extends State<ProductListPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("${widget.category?.title}"),
+        title: Text(widget.category?.title == null ? "Popular products" : widget.category!.title),
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(vertical: 12.0),

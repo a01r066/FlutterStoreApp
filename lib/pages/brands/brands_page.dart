@@ -8,6 +8,7 @@ import 'package:flutter_store_app/pages/shared/shared_widget.dart';
 import 'package:get/get.dart';
 
 import '../../controllers/main_controller.dart';
+import '../../helpers/number_formatter.dart';
 
 class BrandsPage extends StatefulWidget {
   final Brand brand;
@@ -27,7 +28,6 @@ class _BrandsPageState extends State<BrandsPage> {
   @override
   void initState() {
     super.initState();
-
     products.value = apiController.getProductByBrandId(widget.brand.id);
   }
 
@@ -51,15 +51,20 @@ class _BrandsPageState extends State<BrandsPage> {
               children: [
                 ListView.builder(
                   itemBuilder: (context, index) {
-                    return Obx(() =>
-                      BrandItemWidget(
+                    return Obx(
+                      () => BrandItemWidget(
                         brand: brands[index],
-                        isSelected: index == mainController.brandSelectedIndex.value,
+                        isSelected:
+                            index == mainController.brandSelectedIndex.value,
                         callback: () {
                           setState(() {
                             mainController.brandSelectedIndex.value = index;
-                            products.value =
-                                apiController.getProductByBrandId(brands[index].id);
+                            if(brands[index].id != 'all'){
+                              products.value = apiController
+                                  .getProductByBrandId(brands[index].id);
+                            } else {
+                             products.value = apiController.getBrandProducts();
+                            }
                           });
                         },
                       ),
@@ -81,9 +86,13 @@ class _BrandsPageState extends State<BrandsPage> {
                   padding: const EdgeInsets.symmetric(
                       horizontal: 12.0, vertical: 6.0),
                   child: GestureDetector(
-                    onTap: (){
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => ProductDetailPage(product: products[index])));
-                    },
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => ProductDetailPage(
+                                    product: products[index])));
+                      },
                       child: ProductRowWidget(product: products[index])),
                 );
               },
@@ -104,7 +113,11 @@ class BrandItemWidget extends StatelessWidget {
   final bool isSelected;
   final Function() callback;
 
-  BrandItemWidget({Key? key, required this.brand, required this.isSelected, required this.callback})
+  BrandItemWidget(
+      {Key? key,
+      required this.brand,
+      required this.isSelected,
+      required this.callback})
       : super(key: key);
 
   @override
@@ -123,8 +136,12 @@ class BrandItemWidget extends StatelessWidget {
                 style: TextStyle(
                     fontSize: 16.0,
                     fontWeight: FontWeight.w500,
-                    color: isSelected ? Theme.of(context).hintColor : Theme.of(context).colorScheme.primary,
-                    decoration: isSelected ? TextDecoration.underline : TextDecoration.none),
+                    color: isSelected
+                        ? Theme.of(context).hintColor
+                        : Theme.of(context).colorScheme.primary,
+                    decoration: isSelected
+                        ? TextDecoration.underline
+                        : TextDecoration.none),
               ),
             ),
           ),
@@ -162,11 +179,10 @@ class ProductRowWidget extends StatelessWidget {
             width: 96.0,
             height: 96.0,
             decoration: BoxDecoration(
-              image: DecorationImage(
-                image: NetworkImage(product.imageUrl ?? KConstant.noPhotoNetwork),
-                fit: BoxFit.cover
-              )
-            ),
+                image: DecorationImage(
+                    image: NetworkImage(
+                        product.imageUrl ?? KConstant.noPhotoNetwork),
+                    fit: BoxFit.contain)),
           ),
           SizedBox(
             width: 12.0,
@@ -189,7 +205,7 @@ class ProductRowWidget extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "Total: \$450.0",
+                      "Total: \$${formatter.format(product.price)}",
                       style: TextStyle(
                           color: Theme.of(context).hintColor, fontSize: 20.0),
                     ),
