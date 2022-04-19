@@ -172,11 +172,6 @@ class ProductRowWidget extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          // Image.asset(
-          //   product.imageUrl ?? KConstant.noPhoto,
-          //   fit: BoxFit.contain,
-          //   width: 96.0,
-          // ),
           Container(
             width: 96.0,
             height: 96.0,

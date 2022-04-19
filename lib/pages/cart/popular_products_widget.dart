@@ -45,7 +45,6 @@ class _PopularProductsWidgetState extends State<PopularProductsWidget> {
               child: ProductItemWidget(
                 product: products[index],
                 callback: () {
-                  // print("Add to cart");
                   final product = products[index];
                   final cartItem = CartItem(
                       itemId: product.id,

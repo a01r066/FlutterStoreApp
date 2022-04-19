@@ -1,6 +1,7 @@
 import 'package:flash/flash.dart';
 import 'package:flutter/animation.dart';
 import 'package:flutter_store_app/models/cart_item.dart';
+import 'package:flutter_store_app/models/product.dart';
 import 'package:get/get.dart';
 import '../helpers/number_formatter.dart';
 
@@ -29,6 +30,24 @@ class MainController extends GetxController {
 
   // Brands
   final brandSelectedIndex = 0.obs;
+
+  // Wishlist
+  final List<Product> _wishlistItems = <Product>[].obs;
+  List<Product> get wishlistItems => _wishlistItems;
+
+  addToWishlist({required Product product, required Function(bool) callback}){
+    final itemIndex = [..._wishlistItems].indexOf(product);
+    if(itemIndex == -1){
+      _wishlistItems.add(product);
+      callback(true);
+    } else {
+      callback(false);
+    }
+  }
+
+  removeWishlistItem({required Product product}){
+    _wishlistItems.removeWhere((prod) => prod.id == product.id);
+  }
 
   // Cart
   final List<CartItem> _cartItems = <CartItem>[].obs;

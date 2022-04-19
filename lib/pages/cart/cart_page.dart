@@ -81,7 +81,7 @@ class _CartPageState extends State<CartPage> {
                       child: CartItemWidget(
                         cartItem: cartItem,
                         deleteCallback: () {
-                          context.showFlashDialog(
+                          this.context.showFlashDialog(
                             constraints: const BoxConstraints(maxWidth: 300),
                             persistent: true,
                             title: const ListTile(

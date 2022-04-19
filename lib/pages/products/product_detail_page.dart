@@ -3,7 +3,6 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_store_app/controllers/api_controller.dart';
 import 'package:flutter_store_app/controllers/main_controller.dart';
 import 'package:flutter_store_app/helpers/kapp_icons.dart';
-import 'package:flutter_store_app/helpers/kconstants.dart';
 import 'package:flutter_store_app/helpers/number_formatter.dart';
 import 'package:flutter_store_app/models/cart_item.dart';
 import 'package:flutter_store_app/models/product.dart';
@@ -75,7 +74,14 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                                 MatIconButton(
                                   iconData: KAppIcons.heartEmpty,
                                   callback: () {
-                                    print("heart");
+                                    mainController.addToWishlist(product: widget.product, callback: (isSuccess){
+                                      if(isSuccess){
+                                        EasyLoading.showSuccess(
+                                            "${widget.product.title} added to wishlist!");
+                                      } else {
+                                        EasyLoading.showInfo('${widget.product.title} existed in your wishlist!');
+                                      }
+                                    });
                                   },
                                 ),
                                 SizedBox(width: 12.0,),
