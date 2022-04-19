@@ -1,3 +1,4 @@
+import 'package:flash/flash.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_store_app/pages/cart/cart_item_widget.dart';
 import 'package:flutter_store_app/pages/products/product_list_page.dart';
@@ -5,7 +6,6 @@ import 'package:flutter_store_app/pages/shared/empty_page.dart';
 import 'package:get/get.dart';
 import '../../controllers/main_controller.dart';
 import '../../helpers/kapp_icons.dart';
-import '../../models/cart_item.dart';
 
 class CartPage extends StatefulWidget {
   @override
@@ -14,65 +14,113 @@ class CartPage extends StatefulWidget {
 
 class _CartPageState extends State<CartPage> {
   final mainController = Get.find<MainController>();
-  List<CartItem> cartItems = [];
-
-  @override
-  void initState() {
-    super.initState();
-    cartItems = mainController.cartItems;
-    mainController.getTotalAmount();
-  }
 
   @override
   Widget build(BuildContext context) {
-    return cartItems.isEmpty
-        ? Scaffold(
-            body: EmptyPage(
-              title: "Your cart is empty!",
-              description:
-                  "Look like you haven't add any items in your cart yet!",
-              iconData: KAppIcons.cartPlus,
-              buttonName: "Show Now",
-              callback: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => ProductListPage()));
-              },
-            ),
-          )
-        : Obx(
-            () => Scaffold(
+    return Obx(
+      () => mainController.cartItems.isEmpty
+          ? Scaffold(
+              body: EmptyPage(
+                title: "Your cart is empty!",
+                description:
+                    "Look like you haven't add any items in your cart yet!",
+                iconData: KAppIcons.cartPlus,
+                buttonName: "Show Now",
+                callback: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => ProductListPage()));
+                },
+              ),
+            )
+          : Scaffold(
               appBar: AppBar(
                 title: Text("Cart(${mainController.cartItems.length})"),
+                actions: [
+                  IconButton(
+                    onPressed: () {
+                      context.showFlashDialog(
+                        constraints: const BoxConstraints(maxWidth: 300),
+                        persistent: true,
+                        title: const ListTile(
+                          title: Text("Clear cart?"),
+                          leading: Icon(KAppIcons.alert),
+                        ),
+                        content: Text('Your cart will be clear!'),
+                        negativeActionBuilder: (context, controller, _) {
+                          return TextButton(
+                            onPressed: () {
+                              controller.dismiss();
+                            },
+                            child: Text('NO'),
+                          );
+                        },
+                        positiveActionBuilder: (context, controller, _) {
+                          return TextButton(
+                              onPressed: () {
+                                mainController.clearAllCartItems();
+                                controller.dismiss();
+                              },
+                              child: Text('YES'));
+                        },
+                      );
+                    },
+                    icon: const Icon(KAppIcons.delete),
+                  ),
+                ],
               ),
               body: Container(
                 margin: const EdgeInsets.only(bottom: 68.0),
                 child: ListView.builder(
                   itemBuilder: (context, index) {
-                    final cartItem = cartItems[index];
+                    final cartItem = mainController.cartItems[index];
                     return Padding(
-                      padding:
-                          const EdgeInsets.symmetric(horizontal: 12.0, vertical: 6.0),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 12.0, vertical: 6.0),
                       child: CartItemWidget(
                         cartItem: cartItem,
                         deleteCallback: () {
-                          setState(() {
-                            mainController.removeCartItem(cartItem: cartItem);
-                          });
-                          mainController.getTotalAmount();
+                          context.showFlashDialog(
+                            constraints: const BoxConstraints(maxWidth: 300),
+                            persistent: true,
+                            title: const ListTile(
+                              title: Text("Remove item?"),
+                              leading: Icon(KAppIcons.alert),
+                            ),
+                            content:
+                                Text('Product will be removed from the cart!'),
+                            negativeActionBuilder: (context, controller, _) {
+                              return TextButton(
+                                onPressed: () {
+                                  controller.dismiss();
+                                },
+                                child: Text('NO'),
+                              );
+                            },
+                            positiveActionBuilder: (context, controller, _) {
+                              return TextButton(
+                                  onPressed: () {
+                                    mainController.removeCartItem(
+                                        cartItem: cartItem);
+                                    controller.dismiss();
+                                  },
+                                  child: Text('YES'));
+                            },
+                          );
                         },
                         minusCallback: () {
                           mainController.removeCartItemQty(item: cartItem);
-                          mainController.getTotalAmount();
                         },
                         plusCallback: () {
                           mainController.addCartItemQty(item: cartItem);
-                          mainController.getTotalAmount();
                         },
                       ),
                     );
                   },
                   physics: const ClampingScrollPhysics(),
                   shrinkWrap: true,
-                  itemCount: cartItems.length,
+                  itemCount: mainController.cartItems.length,
                 ),
               ),
               bottomSheet: Padding(
@@ -119,6 +167,6 @@ class _CartPageState extends State<CartPage> {
                 ),
               ),
             ),
-          );
+    );
   }
 }

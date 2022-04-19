@@ -3,6 +3,8 @@ part 'product.freezed.dart';
 
 @freezed
 class Product with _$Product {
+  const Product._();
+
   const factory Product({
     required String id,
     required String title,

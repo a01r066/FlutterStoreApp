@@ -3,6 +3,7 @@ part 'kbanner.freezed.dart';
 
 @freezed
 class KBanner with _$KBanner {
+  const KBanner._();
   const factory KBanner(
       {required String id,
       required String title,

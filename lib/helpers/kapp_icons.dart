@@ -27,6 +27,7 @@ class KAppIcons {
   static const cartPlus = MdiIcons.cartPlus;
   static const minusCircle = MdiIcons.minusCircleOutline;
   static const plusCircle = MdiIcons.plusCircleOutline;
+  static const alert = MdiIcons.alertOutline;
 
   // Home icons
   static const menu = MdiIcons.menu;

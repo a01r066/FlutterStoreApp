@@ -160,13 +160,14 @@ class __$CartItemCopyWithImpl<$Res> extends _$CartItemCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_CartItem implements _CartItem {
+class _$_CartItem extends _CartItem {
   const _$_CartItem(
       {required this.itemId,
       required this.title,
       required this.price,
       required this.imageUrl,
-      required this.quantity});
+      required this.quantity})
+      : super._();
 
   @override
   final String itemId;
@@ -211,13 +212,14 @@ class _$_CartItem implements _CartItem {
       __$CartItemCopyWithImpl<_CartItem>(this, _$identity);
 }
 
-abstract class _CartItem implements CartItem {
+abstract class _CartItem extends CartItem {
   const factory _CartItem(
       {required String itemId,
       required String title,
       required double price,
       required String imageUrl,
       required int quantity}) = _$_CartItem;
+  const _CartItem._() : super._();
 
   @override
   String get itemId;

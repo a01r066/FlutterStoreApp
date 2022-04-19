@@ -122,8 +122,9 @@ class __$CategoryCopyWithImpl<$Res> extends _$CategoryCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Category implements _Category {
-  const _$_Category({required this.id, required this.title, this.imageUrl});
+class _$_Category extends _Category {
+  const _$_Category({required this.id, required this.title, this.imageUrl})
+      : super._();
 
   @override
   final String id;
@@ -160,11 +161,12 @@ class _$_Category implements _Category {
       __$CategoryCopyWithImpl<_Category>(this, _$identity);
 }
 
-abstract class _Category implements Category {
+abstract class _Category extends Category {
   const factory _Category(
       {required String id,
       required String title,
       String? imageUrl}) = _$_Category;
+  const _Category._() : super._();
 
   @override
   String get id;

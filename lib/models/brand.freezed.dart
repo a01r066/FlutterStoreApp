@@ -120,8 +120,9 @@ class __$BrandCopyWithImpl<$Res> extends _$BrandCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Brand implements _Brand {
-  const _$_Brand({required this.id, required this.title, this.imageUrl});
+class _$_Brand extends _Brand {
+  const _$_Brand({required this.id, required this.title, this.imageUrl})
+      : super._();
 
   @override
   final String id;
@@ -158,9 +159,10 @@ class _$_Brand implements _Brand {
       __$BrandCopyWithImpl<_Brand>(this, _$identity);
 }
 
-abstract class _Brand implements Brand {
+abstract class _Brand extends Brand {
   const factory _Brand(
       {required String id, required String title, String? imageUrl}) = _$_Brand;
+  const _Brand._() : super._();
 
   @override
   String get id;

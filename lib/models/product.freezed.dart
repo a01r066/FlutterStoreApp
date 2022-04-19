@@ -234,7 +234,7 @@ class __$ProductCopyWithImpl<$Res> extends _$ProductCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Product implements _Product {
+class _$_Product extends _Product {
   const _$_Product(
       {required this.id,
       required this.title,
@@ -245,7 +245,8 @@ class _$_Product implements _Product {
       this.brandId,
       required this.imageUrl,
       this.isFavourite,
-      this.isPopular});
+      this.isPopular})
+      : super._();
 
   @override
   final String id;
@@ -313,7 +314,7 @@ class _$_Product implements _Product {
       __$ProductCopyWithImpl<_Product>(this, _$identity);
 }
 
-abstract class _Product implements Product {
+abstract class _Product extends Product {
   const factory _Product(
       {required String id,
       required String title,
@@ -325,6 +326,7 @@ abstract class _Product implements Product {
       required String imageUrl,
       bool? isFavourite,
       bool? isPopular}) = _$_Product;
+  const _Product._() : super._();
 
   @override
   String get id;

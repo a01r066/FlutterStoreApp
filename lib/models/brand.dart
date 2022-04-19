@@ -3,5 +3,6 @@ part 'brand.freezed.dart';
 
 @freezed
 class Brand with _$Brand {
+  const Brand._();
   const factory Brand({ required String id, required String title, String? imageUrl }) = _Brand;
 }

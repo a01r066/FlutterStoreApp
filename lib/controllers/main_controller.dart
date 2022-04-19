@@ -1,3 +1,4 @@
+import 'package:flash/flash.dart';
 import 'package:flutter/animation.dart';
 import 'package:flutter_store_app/models/cart_item.dart';
 import 'package:get/get.dart';
@@ -33,27 +34,40 @@ class MainController extends GetxController {
   final List<CartItem> _cartItems = <CartItem>[].obs;
   List<CartItem> get cartItems => _cartItems;
 
+  int get cartItemCount => _cartItems.length;
+  final _productItemsCount = 0.obs;
+  int get productItemCount => _productItemsCount.value;
+
   addToCart({required CartItem item, required Function(bool) callback}){
     final itemIndex = [..._cartItems].indexOf(item);
     if(itemIndex == -1){
       _cartItems.add(item);
+      getTotalAmount();
       callback(true);
     } else {
       callback(false);
     }
   }
 
+  clearAllCartItems(){
+    _cartItems.clear();
+    getTotalAmount();
+  }
+
   removeCartItem({required CartItem cartItem}){
     _cartItems.removeWhere((item) => item.itemId == cartItem.itemId);
+    getTotalAmount();
   }
 
   addCartItemQty({required CartItem item}){
     final itemIndex = [..._cartItems].indexOf(item);
 
     final newQty = item.quantity + 1;
+    _productItemsCount.value = newQty;
 
     final newItem = CartItem(itemId: item.itemId, title: item.title, price: item.price, imageUrl: item.imageUrl, quantity: newQty);
     _cartItems[itemIndex] = newItem;
+    getTotalAmount();
   }
 
   removeCartItemQty({required CartItem item}){
@@ -61,9 +75,11 @@ class MainController extends GetxController {
 
     if(item.quantity > 1){
       final newQty = item.quantity - 1;
+      _productItemsCount.value = newQty;
 
       final newItem = CartItem(itemId: item.itemId, title: item.title, price: item.price, imageUrl: item.imageUrl, quantity: newQty);
       _cartItems[itemIndex] = newItem;
+      getTotalAmount();
     }
   }
 

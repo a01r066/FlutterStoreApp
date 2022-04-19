@@ -121,9 +121,10 @@ class __$KBannerCopyWithImpl<$Res> extends _$KBannerCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_KBanner implements _KBanner {
+class _$_KBanner extends _KBanner {
   const _$_KBanner(
-      {required this.id, required this.title, required this.imageUrl});
+      {required this.id, required this.title, required this.imageUrl})
+      : super._();
 
   @override
   final String id;
@@ -160,11 +161,12 @@ class _$_KBanner implements _KBanner {
       __$KBannerCopyWithImpl<_KBanner>(this, _$identity);
 }
 
-abstract class _KBanner implements KBanner {
+abstract class _KBanner extends KBanner {
   const factory _KBanner(
       {required String id,
       required String title,
       required String imageUrl}) = _$_KBanner;
+  const _KBanner._() : super._();
 
   @override
   String get id;

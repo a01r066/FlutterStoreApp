@@ -13,11 +13,15 @@ class HeaderWidget extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text(
-          title,
-          style: TextStyle(
-            fontSize: 20.0,
-            fontWeight: FontWeight.bold,
+        Flexible(
+          child: Text(
+            title,
+            style: TextStyle(
+              fontSize: 20.0,
+              fontWeight: FontWeight.bold,
+            ),
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
           ),
         ),
         isHidden == true
@@ -64,7 +68,7 @@ class MatIconButton extends StatelessWidget {
         onPressed: callback,
         child: Icon(
           iconData,
-          size: 28.0,
+          size: 24.0,
           color: iconColor,
         ),
       ),

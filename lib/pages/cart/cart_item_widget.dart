@@ -79,7 +79,7 @@ class CartItemWidget extends StatelessWidget {
                           ),
                         ),
                         MatIconButton(
-                            iconData: KAppIcons.delete, iconColor: Theme.of(context).hintColor, callback: deleteCallback)
+                            iconData: KAppIcons.close, iconColor: Theme.of(context).hintColor, callback: deleteCallback)
                       ],
                     ),
                     Column(

@@ -139,7 +139,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                     children: [
                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: 12.0),
-                        child: HeaderWidget(title: widget.product.title),
+                        child: HeaderWidget(title: widget.product.title, isHidden: true,),
                       ),
                       Text("US \$ ${formatter.format(widget.product.price)}"),
                       Divider(),
