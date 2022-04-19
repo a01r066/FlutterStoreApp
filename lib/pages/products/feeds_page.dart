@@ -70,12 +70,12 @@ class _FeedsPageState extends State<FeedsPage> {
               ),
             ),
             Expanded(
-              child: Container(
-                padding: const EdgeInsets.all(12.0),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 12.0),
                 child: GridView.count(
-                  childAspectRatio: 25 / 37,
+                  childAspectRatio: 5/9,
                   crossAxisCount: 2,
-                  mainAxisSpacing: 12.0,
+                  // mainAxisSpacing: 12.0,
                   crossAxisSpacing: 12.0,
                   children: List.generate(
                     products.length,
@@ -85,7 +85,10 @@ class _FeedsPageState extends State<FeedsPage> {
                           // Get.toNamed("/product_detail");
                           Navigator.push(context, MaterialPageRoute(builder: (context) => ProductDetailPage(product: products[index])));
                         },
-                          child: ProductItemWidget(product: products[index],));
+                          child: Padding(
+                            padding: const EdgeInsets.only(top: 12.0),
+                            child: ProductItemWidget(product: products[index],),
+                          ));
                     },
                   ),
                 ),

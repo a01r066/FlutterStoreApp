@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_store_app/controllers/main_controller.dart';
 import 'package:flutter_store_app/helpers/kapp_icons.dart';
-import 'package:flutter_store_app/helpers/kconstants.dart';
 import 'package:flutter_store_app/models/cart_item.dart';
 import 'package:flutter_store_app/pages/products/product_detail_page.dart';
 import 'package:flutter_store_app/pages/shared/shared_widget.dart';
@@ -13,6 +12,8 @@ import '../../models/product.dart';
 import 'package:get/get.dart';
 
 class PopularProductsWidget extends StatefulWidget {
+  const PopularProductsWidget({Key? key}) : super(key: key);
+
   @override
   _PopularProductsWidgetState createState() => _PopularProductsWidgetState();
 }

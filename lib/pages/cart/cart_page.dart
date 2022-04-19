@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_store_app/pages/cart/cart_item_widget.dart';
+import 'package:flutter_store_app/pages/products/product_list_page.dart';
 import 'package:flutter_store_app/pages/shared/empty_page.dart';
 import 'package:get/get.dart';
 import '../../controllers/main_controller.dart';
@@ -15,16 +16,6 @@ class _CartPageState extends State<CartPage> {
   final mainController = Get.find<MainController>();
   List<CartItem> cartItems = [];
 
-  final emptyPage = EmptyPage(
-    title: "Your cart is empty!",
-    description: "Look like you haven't add any items in your cart yet!",
-    iconData: KAppIcons.cartPlus,
-    buttonName: "Show Now",
-    callback: () {
-      print("Button tapped!");
-    },
-  );
-
   @override
   void initState() {
     super.initState();
@@ -36,21 +27,30 @@ class _CartPageState extends State<CartPage> {
   Widget build(BuildContext context) {
     return cartItems.isEmpty
         ? Scaffold(
-            body: emptyPage,
+            body: EmptyPage(
+              title: "Your cart is empty!",
+              description:
+                  "Look like you haven't add any items in your cart yet!",
+              iconData: KAppIcons.cartPlus,
+              buttonName: "Show Now",
+              callback: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => ProductListPage()));
+              },
+            ),
           )
-        : Obx(() =>
-          Scaffold(
+        : Obx(
+            () => Scaffold(
               appBar: AppBar(
                 title: Text("Cart(${mainController.cartItems.length})"),
               ),
               body: Container(
-                margin: EdgeInsets.only(bottom: 68.0),
+                margin: const EdgeInsets.only(bottom: 68.0),
                 child: ListView.builder(
                   itemBuilder: (context, index) {
                     final cartItem = cartItems[index];
                     return Padding(
                       padding:
-                      EdgeInsets.symmetric(horizontal: 12.0, vertical: 6.0),
+                          const EdgeInsets.symmetric(horizontal: 12.0, vertical: 6.0),
                       child: CartItemWidget(
                         cartItem: cartItem,
                         deleteCallback: () {
@@ -70,7 +70,7 @@ class _CartPageState extends State<CartPage> {
                       ),
                     );
                   },
-                  physics: ClampingScrollPhysics(),
+                  physics: const ClampingScrollPhysics(),
                   shrinkWrap: true,
                   itemCount: cartItems.length,
                 ),
@@ -97,7 +97,11 @@ class _CartPageState extends State<CartPage> {
                       padding: EdgeInsets.fromLTRB(12.0, 8.0, 12.0, 24.0),
                       child: Row(
                         children: [
-                          Text("TOTAL:", style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),),
+                          Text(
+                            "TOTAL:",
+                            style: TextStyle(
+                                fontSize: 16.0, fontWeight: FontWeight.bold),
+                          ),
                           SizedBox(
                             width: 12.0,
                           ),
@@ -115,6 +119,6 @@ class _CartPageState extends State<CartPage> {
                 ),
               ),
             ),
-        );
+          );
   }
 }

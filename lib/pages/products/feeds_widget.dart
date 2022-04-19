@@ -25,6 +25,7 @@ class ProductItemWidget extends StatelessWidget {
                   children: [
                     ClipRect(
                       child: Container(
+                        padding: EdgeInsets.all(8.0),
                         constraints:
                             BoxConstraints(minHeight: 96.0, maxHeight: 155.0),
                         child:

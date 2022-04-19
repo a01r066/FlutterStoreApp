@@ -35,43 +35,43 @@ class _ProductListPageState extends State<ProductListPage> {
       appBar: AppBar(
         title: Text(widget.category?.title == null ? "Popular products" : widget.category!.title),
       ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 12.0),
-        child: Column(
-          children: [
-            Expanded(
-              child: Container(
-                margin: EdgeInsets.symmetric(horizontal: 12.0),
-                child: GridView.count(
-                  childAspectRatio: 25 / 37,
-                  crossAxisCount: 2,
-                  mainAxisSpacing: 12.0,
-                  crossAxisSpacing: 12.0,
-                  children: List.generate(
-                    products.length,
-                    (index) {
-                      return GestureDetector(
-                          onTap: () {
-                            print("productId: ${products[index].id}");
-                            // Get.toNamed("/product_detail");
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) =>
-                                    ProductDetailPage(product: products[index]),
-                              ),
-                            );
-                          },
+      body: Column(
+        children: [
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 12.0),
+              child: GridView.count(
+                childAspectRatio: 5/9,
+                crossAxisCount: 2,
+                // mainAxisSpacing: 12.0,
+                crossAxisSpacing: 12.0,
+                children: List.generate(
+                  products.length,
+                  (index) {
+                    return GestureDetector(
+                        onTap: () {
+                          print("productId: ${products[index].id}");
+                          // Get.toNamed("/product_detail");
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  ProductDetailPage(product: products[index]),
+                            ),
+                          );
+                        },
+                        child: Padding(
+                          padding: const EdgeInsets.only(top: 12.0),
                           child: ProductItemWidget(
                             product: products[index],
-                          ));
-                    },
-                  ),
+                          ),
+                        ));
+                  },
                 ),
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

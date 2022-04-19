@@ -46,35 +46,37 @@ class _BrandsPageState extends State<BrandsPage> {
             width: 52.0,
             padding: const EdgeInsets.all(8.0),
             decoration: BoxDecoration(color: Theme.of(context).focusColor),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                ListView.builder(
-                  itemBuilder: (context, index) {
-                    return Obx(
-                      () => BrandItemWidget(
-                        brand: brands[index],
-                        isSelected:
-                            index == mainController.brandSelectedIndex.value,
-                        callback: () {
-                          setState(() {
-                            mainController.brandSelectedIndex.value = index;
-                            if(brands[index].id != 'all'){
-                              products.value = apiController
-                                  .getProductByBrandId(brands[index].id);
-                            } else {
-                             products.value = apiController.getBrandProducts();
-                            }
-                          });
-                        },
-                      ),
-                    );
-                  },
-                  itemCount: brands.length,
-                  shrinkWrap: true,
-                  physics: ClampingScrollPhysics(),
-                ),
-              ],
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  ListView.builder(
+                    itemBuilder: (context, index) {
+                      return Obx(
+                        () => BrandItemWidget(
+                          brand: brands[index],
+                          isSelected:
+                              index == mainController.brandSelectedIndex.value,
+                          callback: () {
+                            setState(() {
+                              mainController.brandSelectedIndex.value = index;
+                              if(brands[index].id != 'all'){
+                                products.value = apiController
+                                    .getProductByBrandId(brands[index].id);
+                              } else {
+                               products.value = apiController.getBrandProducts();
+                              }
+                            });
+                          },
+                        ),
+                      );
+                    },
+                    itemCount: brands.length,
+                    shrinkWrap: true,
+                    physics: ClampingScrollPhysics(),
+                  ),
+                ],
+              ),
             ),
           ),
           Container(
@@ -130,7 +132,7 @@ class BrandItemWidget extends StatelessWidget {
           child: GestureDetector(
             onTap: callback,
             child: Container(
-              padding: EdgeInsets.symmetric(horizontal: 12.0),
+              padding: const EdgeInsets.symmetric(horizontal: 12.0),
               child: Text(
                 brand.title,
                 style: TextStyle(

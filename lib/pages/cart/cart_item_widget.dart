@@ -113,24 +113,8 @@ class CartItemWidget extends StatelessWidget {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
-                            // Material(
-                            //   color: Colors.transparent,
-                            //   child: InkWell(
-                            //     borderRadius: BorderRadius.circular(20.0),
-                            //     onTap: () {},
-                            //     child: Container(
-                            //       height: 40.0,
-                            //       width: 40.0,
-                            //       child: Icon(
-                            //         MdiIcons.minusCircleOutline,
-                            //         color: Colors.green,
-                            //       ),
-                            //     ),
-                            //   ),
-                            // ),
                             MatIconButton(iconData: KAppIcons.minusCircle, iconColor: Colors.redAccent, callback: minusCallback),
                             Container(
-                              width: 52.0,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(4.0),
                                 gradient: LinearGradient(
@@ -141,11 +125,11 @@ class CartItemWidget extends StatelessWidget {
                                 ),
                               ),
                               child: Padding(
-                                padding: const EdgeInsets.all(4.0),
+                                padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
                                 child: Text(
                                   "${cartItem.quantity}",
                                   style: TextStyle(
-                                      fontSize: 20.0, color: Colors.white),
+                                      fontSize: 16.0, color: Colors.white),
                                   overflow: TextOverflow.ellipsis,
                                   textAlign: TextAlign.center,
                                 ),

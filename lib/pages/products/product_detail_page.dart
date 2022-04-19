@@ -93,8 +93,8 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                       ClipRect(
                         child: Container(
                           constraints: BoxConstraints(
-                            minHeight: 100.0,
-                            maxHeight: 152.0,
+                            minHeight: 96.0,
+                            maxHeight: 155.0,
                           ),
                           decoration: BoxDecoration(
                             image: DecorationImage(
